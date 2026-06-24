@@ -1,0 +1,20 @@
+# Dependencies
+node_modules
+
+# Nuxt
+.nuxt
+.output
+.data
+dist
+
+# Env / secrets
+.env
+.env.*
+
+# Crawled doc images — 2.8GB (incl. 100MB+ demo GIFs); too big for git.
+# Host on object storage/CDN for production, or rewrite image URLs to source.
+public/docs-assets/
+
+# Logs / OS
+*.log
+.DS_Store
