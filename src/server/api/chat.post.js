@@ -83,7 +83,6 @@ export default defineEventHandler(async (event) => {
           config: {
             systemInstruction,
             maxOutputTokens: 1024,
-            thinkingConfig: { thinkingLevel: "low" },
           },
         });
         for await (const chunk of stream) {
