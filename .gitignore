@@ -11,9 +11,12 @@ dist
 .env
 .env.*
 
-# Crawled doc images — 2.8GB (incl. 100MB+ demo GIFs); too big for git.
-# Host on object storage/CDN for production, or rewrite image URLs to source.
-public/docs-assets/
+# Oversized demo GIFs (>100MB) — GitHub hard limit, excluded from git.
+# (Convert to MP4 or host on CDN; the rest of docs-assets IS committed.)
+public/docs-assets/**/twrrtlsanddatatelemetrydemo-manual.gif
+public/docs-assets/**/nearby-interaction-demo.gif
+public/docs-assets/**/highspeeddownlinktdoartlsdemo-manual.gif
+public/docs-assets/**/downlinktdoartlsdemo-manual.gif
 
 # Logs / OS
 *.log
