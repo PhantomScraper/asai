@@ -5,6 +5,7 @@
       <slot />
     </main>
     <AppFooter />
+    <QuickstartBar />
     <DocsChat />
   </div>
 </template>
@@ -12,6 +13,7 @@
 <script setup>
 import AppHeader from "@/components/layout/AppHeader.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
+import QuickstartBar from "@/components/layout/QuickstartBar.vue";
 </script>
 
 <style scoped>

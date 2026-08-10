@@ -7,20 +7,34 @@
       :cta-link="docsLink()"
       :show-visual="false"
     />
-    <section class="section">
+    <section class="section support__resources">
       <div class="container">
         <div class="grid-3">
           <article v-for="(resource, i) in tm('support.resources')" :key="resource.title" class="card support__card">
+            <span class="support__icon" aria-hidden="true">
+              <!-- Documentation: open book -->
+              <svg v-if="i === 0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+              <!-- Quick Start: rocket -->
+              <svg v-else-if="i === 1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+              </svg>
+              <!-- Community Forum: two chat bubbles -->
+              <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
+                <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-8a2 2 0 0 1-2-2v-1" />
+              </svg>
+            </span>
             <h3>{{ resource.title }}</h3>
             <p>{{ resource.description }}</p>
-            <a :href="resourceLinks[i]" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{{ resource.linkText }}</a>
+            <a :href="resourceLinks[i]" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">{{ resource.linkText }}</a>
           </article>
         </div>
-      </div>
-    </section>
-    <section class="section support__docs-visual">
-      <div class="container">
-        <img :src="productImages.supportResources" alt="" class="support__resources-image" loading="lazy" />
       </div>
     </section>
     <section class="section support__docs">
@@ -31,20 +45,22 @@
           <p class="section-subtitle section-header__subtitle">{{ t('support.docsSectionsSubtitle') }}</p>
         </div>
         <div class="support__docs-grid">
-          <a v-for="(section, i) in tm('support.docSections')" :key="section" :href="docSectionLinks[i]" target="_blank" rel="noopener noreferrer" class="support__docs-link card">
-            <span>{{ section }}</span>
-            <span class="arrow">{{ t('common.arrow') }}</span>
+          <a v-for="(section, i) in tm('support.docSections')" :key="section" :href="docSectionLinks[i]" target="_blank" rel="noopener noreferrer" class="chip">
+            {{ section }}
+            <span aria-hidden="true">{{ t('common.arrow') }}</span>
           </a>
         </div>
       </div>
     </section>
     <section class="section support__mailing">
-      <div class="container support__mailing-inner card">
-        <div>
-          <h2>{{ t('support.mailingTitle') }}</h2>
-          <p>{{ t('support.mailingText') }}</p>
+      <div class="container">
+        <div class="support__mailing-banner">
+          <div class="support__mailing-copy">
+            <h2>{{ t('support.mailingTitle') }}</h2>
+            <p>{{ t('support.mailingText') }}</p>
+          </div>
+          <button type="button" class="support__mailing-btn" @click="showSubscribe = true">{{ t('support.mailingButton') }}</button>
         </div>
-        <button class="btn btn-primary" @click="showSubscribe = true">{{ t('support.mailingButton') }}</button>
       </div>
     </section>
     <div v-if="showSubscribe" class="support__modal" role="dialog" aria-modal="true">
@@ -69,7 +85,6 @@ import HeroSection from '@/components/ui/HeroSection.vue'
 import CtaBanner from '@/components/ui/CtaBanner.vue'
 import { useI18n } from '@/i18n'
 import { externalLinks } from '@/data/site'
-import { productImages } from '@/data/images'
 
 const { t, tm } = useI18n()
 const { docsLink } = useDocs()
@@ -92,23 +107,161 @@ const handleSubscribe = () => {
 </script>
 
 <style scoped>
-.support__card { display: flex; flex-direction: column; }
-.support__card h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
-.support__card p { font-size: 0.9375rem; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 1.5rem; flex: 1; }
-.support__docs-visual { background: white; padding-top: 0; }
-.support__resources-image { width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--color-border-light); box-shadow: var(--shadow-sm); }
-.support__docs { background: var(--color-bg); }
-.support__docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-.support__docs-link { display: flex; align-items: center; justify-content: space-between; padding: 1.125rem 1.25rem; font-family: var(--font-display); font-weight: 600; font-size: 0.9375rem; }
-.support__mailing { background: white; }
-.support__mailing-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.5rem, 3vw, 2rem); }
-.support__mailing-inner h2 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.5rem; }
-.support__mailing-inner p { color: var(--color-text-muted); max-width: 520px; line-height: 1.6; }
-.support__modal { position: fixed; inset: 0; background: rgba(15, 20, 25, 0.5); display: flex; align-items: center; justify-content: center; z-index: 2000; padding: 1rem; }
-.support__modal-content { position: relative; max-width: 440px; width: 100%; padding: 2rem; }
-.support__modal-close { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; color: var(--color-text-muted); }
-.support__modal-content form { display: flex; flex-direction: column; gap: 0.75rem; }
-.support__modal-content input { padding: 0.875rem 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: 0.9375rem; }
-.support__success { color: #059669; margin-top: 1rem; font-size: 0.875rem; }
-@media (max-width: 640px) { .support__mailing-inner { flex-direction: column; align-items: flex-start; } }
+.support__resources {
+  background: white;
+}
+
+.support__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.support__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--tint-blue-soft);
+  color: var(--color-primary-dark);
+  margin-bottom: 1rem;
+}
+
+.support__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.support__card h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.support__card p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+/* Qorvo signature: tinted band with a large asymmetric corner, chip links */
+.support__docs {
+  background: var(--tint-blue);
+  border-radius: 0 0 var(--radius-corner-lg) 0;
+}
+
+.support__docs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Mailing list: compact blue banner */
+.support__mailing {
+  background: white;
+}
+
+.support__mailing-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.support__mailing-copy h2 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.support__mailing-copy p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 560px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.support__mailing-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.75rem;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+
+.support__mailing-btn:hover {
+  background: var(--color-navy);
+  color: white;
+}
+
+.support__modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 20, 25, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.support__modal-content {
+  position: relative;
+  max-width: 440px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.support__modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.support__modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.support__modal-content input {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+}
+
+.support__success {
+  color: #059669;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .support__mailing-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 </style>

@@ -10,6 +10,7 @@ export default {
   },
   nav: {
     contactUs: 'お問い合わせ',
+    leapsAi: 'LEAPS AI',
     links: [
       { name: '製品', path: '/our-products' },
       { name: 'プロジェクト', path: '/our-projects' },
@@ -46,6 +47,10 @@ export default {
     contact: 'お問い合わせ',
     copyright: 'Copyright © 2019–2026 by LEAPS',
     privacy: 'プライバシーポリシー',
+    description: 'LEAPSはUltra-Widebandに基づくリアルタイム位置測位・テレメトリシステムを開発しています — 倉庫、病院、工場などに正確な測位とデータテレメトリを提供します。',
+    stayConnected: 'つながりを保つ',
+    stayUpToDate: '最新情報をお届けします。',
+    signUp: '登録',
   },
   cta: {
     title: 'お困りですか？',
@@ -56,6 +61,75 @@ export default {
   home: {
     heroTitle: 'Ultra-Wideband技術でビジネスに新たな価値を見つける',
     heroSubtitle: 'Ultra-Wideband技術を製品や日々の業務に活用し、堅牢で安全な測位精度によって、他のどの無線技術でも実現できない新たな価値を見つけましょう。',
+    hero: {
+      slides: [
+        {
+          kicker: 'Ultra-Wideband技術',
+          title: 'ビジネスに新たな価値を。',
+          subtitle: '他のどの無線技術でも実現できない、堅牢で安全な測位精度。',
+          cta: 'ソリューションを見る',
+          link: '/solutions',
+        },
+        {
+          kicker: 'UDK開発キット',
+          title: 'オールインワンUWBキットで設計を始めよう。',
+          subtitle: 'すぐに使えるUltra-WidebandデモキットでFiRa、TDoA、TWR、データテレメトリを評価。',
+          cta: '製品を見る',
+          link: '/our-products',
+        },
+        {
+          kicker: 'LEAPS RTLS',
+          title: 'プロダクションレディなRTLSソフトウェアスタック。',
+          subtitle: 'ファームウェア、ゲートウェイ、サーバー、モバイルツール — Qorvo UWBハードウェア向けに設計。',
+          cta: '技術を見る',
+          link: '/solutions#technology',
+        },
+      ],
+    },
+    chips: {
+      title: 'ソリューションを探す',
+      items: [
+        { label: '倉庫', path: '/our-projects' },
+        { label: '病院', path: '/our-projects' },
+        { label: '工場', path: '/our-projects' },
+        { label: 'RTLSソリューション', path: '/solutions' },
+        { label: 'UWB技術', path: '/solutions#technology' },
+        { label: 'UDKキット', path: '/our-products' },
+        { label: 'サポート', path: '/support' },
+      ],
+    },
+    resources: {
+      title: '注目のリソース',
+      labels: ['ソリューション', '技術', '製品', 'サービス'],
+      docsCard: { label: 'ドキュメント', title: 'LEAPS技術を深く知る', cta: 'ドキュメントを見る' },
+    },
+    designHub: {
+      title: '精度のために構築、スケールのために設計',
+      linkText: 'ドキュメントを見る',
+      items: [
+        { id: 'modular', title: 'モジュラー', text: '1つのモジュール、1つのファームウェア — さまざまなモードとプロファイルに設定可能。' },
+        { id: 'secure', title: 'セキュア', text: 'セキュリティとプライバシーを重視してゼロから設計。' },
+        { id: 'versatile', title: '多用途', text: '高密度な屋内ナビゲーションから長寿命バッテリーのトラッキングまで。' },
+        { id: 'simple', title: 'シンプル', text: '簡単なセットアップと幅広いAPIでシームレスに統合。' },
+      ],
+    },
+    techBanner: {
+      title: 'UDKでUWBを評価',
+      text: 'オールインワンUltra-Wideband開発キット — FiRa、TDoA、TWR、データテレメトリを箱から出してすぐに使用可能。',
+      cta: '製品を見る',
+    },
+    stories: {
+      title: 'RTLSソリューションが業務をどう変えるか',
+      subtitle: '資産・人・設備をリアルタイムで正確に追跡 — より深いインサイト、効率向上、安全性の強化を支援します。',
+      cta: 'プロジェクトを見る',
+    },
+    institutional: {
+      kicker: '私たちはLEAPS',
+      title: 'あなたの周りに、新たな価値を',
+      text: '2016年にチェコ共和国で設立されたLEAPSは、QorvoのDWM1001、DWM3001モジュールおよびPANS RTLSを設計・開発 — 世界中のFortune 500企業にUltra-Wideband技術と設計サービスを提供しています。',
+      cta: '詳しく見る',
+    },
+    logoStrip: { title: '正規代理店から購入' },
     whyLabel: 'LEAPSが選ばれる理由',
     whyTitle: 'ビジネスに新たな価値を見つける',
     whySubtitle: '堅牢な無線Ultra-Wideband技術に基づき、アプリケーション向けにリアルタイムの高精度測位とデータテレメトリを実現します。',
@@ -106,6 +180,14 @@ export default {
       { id: 'unique', title: 'ユニーク', description: 'LEAPS RTLSは、リアルタイムでの高精度測位とデータテレメトリのためのユニークな万能ツールです。小型で汎用性の高いモジュールが、柔軟性と高い投資対効果を提供します。' },
       { id: 'proven', title: '実績', description: 'LEAPS RTLSは、QorvoのDWM1001およびPANS RTLSの開発者によって構築されました。これはQorvoから信頼される、信頼性と経験豊富な専門家チームによって実現されたものです。' },
     ],
+  },
+  quickstart: {
+    quickstart: 'クイックスタート',
+    quickstartSub: 'LEAPSで設計を始めよう',
+    docs: 'ドキュメント',
+    store: 'ストア',
+    forum: 'フォーラム',
+    support: 'サポート',
   },
   products: {
     heroTitle: 'オールインワンのUltra-Wideband開発キット',

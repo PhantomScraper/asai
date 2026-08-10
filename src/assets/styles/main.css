@@ -1,29 +1,44 @@
 :root {
-  --color-primary: #b83232;
-  --color-primary-dark: #962828;
-  --color-primary-light: #e85a5a;
-  --color-accent: #1a4fd8;
-  --color-text: #1a1a2e;
-  --color-text-muted: #5c6370;
+  --color-primary: #00a0df;
+  --color-primary-dark: #0b5d9d;
+  --color-primary-light: #33b5e8;
+  --color-link: #0b5d9d;
+  --color-accent: #0b5d9d;
+  --color-navy: #031e3e;
+  --color-gray-dark: #2e2e2e;
+  --color-gray-mid: #565656;
+  --color-text: #1e1e1e;
+  --color-text-muted: #555c66;
   --color-text-light: #8b919a;
-  --color-bg: #f8f9fc;
+  --color-bg: #f5f5f5;
   --color-bg-white: #ffffff;
-  --color-bg-dark: #0f1419;
-  --color-border: #e4e8ef;
-  --color-border-light: #f0f2f6;
+  --color-bg-dark: #2e2e2e;
+  --color-border: #e0e0e0;
+  --color-border-light: #ededed;
 
-  --font-display: 'Instrument Sans', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --gradient-blue: linear-gradient(242deg, #00a0df 0%, #0b5d9d 100%);
+  --gradient-gray: linear-gradient(90deg, #565656 10%, #2e2e2e 100%);
+  --gradient-navy: linear-gradient(90deg, #031e3e 0%, rgba(6, 37, 75, 0.91) 35%, rgba(14, 60, 115, 0.65) 70%, rgba(12, 81, 165, 0.01) 100%);
+  --gradient-hero: linear-gradient(90deg, #000 0%, rgba(64, 64, 64, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  --tint-blue: rgba(0, 160, 223, 0.2);
+  --tint-blue-soft: rgba(0, 160, 223, 0.08);
+  --tint-blue-faint: rgba(0, 160, 223, 0.04);
+
+  --font-display: 'Nunito', system-ui, sans-serif;
+  --font-body: 'Roboto', system-ui, sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
+  --radius-pill: 100px;
+  --radius-corner-lg: 140px;
+  --radius-corner-xl: 180px;
 
-  --shadow-sm: 0 1px 3px rgba(15, 20, 25, 0.06);
-  --shadow-md: 0 4px 20px rgba(15, 20, 25, 0.08);
-  --shadow-lg: 0 12px 40px rgba(15, 20, 25, 0.12);
-  --shadow-glow: 0 0 60px rgba(184, 50, 50, 0.15);
+  --shadow-sm: 0 1px 3px rgba(30, 30, 30, 0.06);
+  --shadow-md: 0 4px 20px rgba(30, 30, 30, 0.08);
+  --shadow-lg: 0 12px 40px rgba(30, 30, 30, 0.12);
+  --shadow-glow: 0 0 60px rgba(0, 160, 223, 0.15);
 
   --header-height: 72px;
   --container-max: 1200px;
@@ -47,10 +62,10 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--color-bg-white);
   overflow-x: hidden;
 }
 
@@ -94,28 +109,24 @@ ul {
   font-family: var(--font-display);
   font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   margin-bottom: 1rem;
-}
-
-.section-label::before {
-  content: '';
-  width: 24px;
-  height: 2px;
-  background: var(--color-primary);
-  border-radius: 1px;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.625rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: var(--color-text);
   margin-bottom: 1rem;
+}
+
+.section-title--lg {
+  font-size: clamp(1.875rem, 3vw, 2.125rem);
 }
 
 .section-subtitle {
@@ -139,31 +150,33 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
+  padding: 0.75rem 1.375rem;
   font-family: var(--font-display);
   font-size: 0.9375rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
+  font-weight: 500;
+  border-radius: var(--radius-pill);
   transition: all var(--transition);
   white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
 }
 
 .btn-primary {
   background: var(--color-primary);
   color: white;
-  box-shadow: 0 4px 14px rgba(184, 50, 50, 0.35);
 }
 
 .btn-primary:hover {
   background: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(184, 50, 50, 0.4);
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  background: var(--tint-blue-faint);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary);
 }
 
 .btn-outline:hover {
@@ -171,14 +184,25 @@ ul {
   color: white;
 }
 
+.btn-light {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.btn-light:hover {
+  background: white;
+  color: var(--color-primary-dark);
+}
+
 .btn-ghost {
   background: transparent;
-  color: var(--color-primary);
+  color: var(--color-link);
   padding: 0.5rem 0;
 }
 
 .btn-ghost:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }
 
 .btn-ghost .arrow {
@@ -192,15 +216,80 @@ ul {
 .card {
   background: var(--color-bg-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   padding: 2rem;
   transition: all var(--transition);
 }
 
 .card:hover {
-  border-color: transparent;
   box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+}
+
+/* Qorvo-style circle arrow used on card links */
+.arrow-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.875rem;
+  transition: background var(--transition), transform var(--transition);
+}
+
+a:hover .arrow-circle,
+.arrow-circle:hover {
+  background: var(--color-primary-dark);
+  transform: translateX(2px);
+}
+
+/* Qorvo-style white pill chip link */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1.125rem;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition);
+}
+
+.chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+/* Shift red-accented brand illustrations to the Qorvo blue tone.
+   Whites/grays are unaffected; only the red accents rotate to blue. */
+.recolor-blue {
+  filter: hue-rotate(197deg) saturate(1.05);
+}
+
+/* Multicolored illustrations (mixed red/orange/green accents) get a uniform
+   blue duotone instead — hue-rotate alone would leave stray pinks/oranges. */
+.recolor-mono-blue {
+  filter: grayscale(1) sepia(1) saturate(2.4) hue-rotate(175deg) brightness(1.04);
+}
+
+/* Qorvo-style uppercase card label */
+.card__label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
 }
 
 .grid-2 {
@@ -349,8 +438,8 @@ ul {
 
 .mobile-menu-link:hover,
 .mobile-menu-link--active {
-  color: var(--color-primary);
-  background: rgba(184, 50, 50, 0.08);
+  color: var(--color-primary-dark);
+  background: var(--tint-blue-soft);
 }
 
 .mobile-menu-lang {

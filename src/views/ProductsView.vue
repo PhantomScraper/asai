@@ -6,9 +6,7 @@
       :cta-text="t('products.ctaUdk')"
       :cta-link="docsLink('udk-start')"
       :showcase-primary="productImages.udkBanner"
-      :showcase-secondary="productImages.udkKit"
       showcase-primary-alt="All-in-One Ultra-Wideband Development Kit"
-      showcase-secondary-alt="UDK kit packaging and devices"
     />
     <section class="section products__overview">
       <div class="container products__overview-grid">
@@ -26,7 +24,7 @@
     </section>
     <section class="section products__kit">
       <div class="container products__kit-grid">
-        <img :src="productImages.udkBanner" alt="" class="products__kit-image" loading="lazy" />
+        <img :src="productImages.udkBanner" alt="" class="products__kit-image recolor-blue" loading="lazy" />
         <div>
           <span class="section-label">{{ t('products.kitLabel') }}</span>
           <h2 class="section-title">{{ t('products.kitTitle') }}</h2>
@@ -91,7 +89,8 @@ const { docsLink } = useDocs()
 .products__demo-list { display: grid; gap: 0.625rem; margin-bottom: 1.75rem; }
 .products__demo-list li { position: relative; padding-left: 1.25rem; color: var(--color-text-muted); font-size: 0.9375rem; }
 .products__demo-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-primary); }
-.products__kit { background: var(--color-bg); }
+/* Qorvo signature: tinted band with a large asymmetric corner */
+.products__kit { background: var(--tint-blue); border-radius: 0 0 var(--radius-corner-lg) 0; }
 .products__kit-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
 .products__kit-image { width: 100%; max-width: 520px; margin: 0 auto; display: block; border-radius: var(--radius-lg); background: white; padding: 0.75rem; border: 1px solid var(--color-border-light); box-shadow: var(--shadow-md); }
 .products__visual { background: white; padding-top: 2rem; padding-bottom: 2rem; }

@@ -68,7 +68,8 @@ const UI = {
 };
 const ui = computed(() => UI[locale.value] || UI.en);
 
-const open = ref(false);
+// Shared with the header's "LEAPS AI" button
+const open = useState("leaps-chat-open", () => false);
 const input = ref("");
 const loading = ref(false);
 const error = ref("");
@@ -152,7 +153,7 @@ async function send() {
   gap: 0.5rem;
   padding: 0.75rem 1.1rem;
   border-radius: 999px;
-  background: var(--color-primary, #b83232);
+  background: var(--gradient-blue, #00a0df);
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -178,7 +179,7 @@ async function send() {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1rem;
-  background: var(--color-primary, #b83232);
+  background: var(--gradient-blue, #00a0df);
   color: #fff;
 }
 .dchat__close {
@@ -213,7 +214,7 @@ async function send() {
   white-space: pre-wrap;
 }
 .dchat__msg--user .dchat__bubble {
-  background: var(--color-primary, #b83232);
+  background: var(--color-primary, #00a0df);
   color: #fff;
 }
 .dchat__msg--assistant .dchat__bubble {
@@ -231,7 +232,7 @@ async function send() {
   margin: 0.2rem 0;
 }
 .dchat__sources a {
-  color: var(--color-primary, #b83232);
+  color: var(--color-link, #0b5d9d);
 }
 .dchat__error {
   color: #b00020;

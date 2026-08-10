@@ -10,6 +10,7 @@ export default {
   },
   nav: {
     contactUs: 'Kontaktujte nás',
+    leapsAi: 'LEAPS AI',
     links: [
       { name: 'Produkty', path: '/our-products' },
       { name: 'Projekty', path: '/our-projects' },
@@ -46,6 +47,10 @@ export default {
     contact: 'Kontakt',
     copyright: 'Copyright © 2019–2026 by LEAPS',
     privacy: 'Zásady ochrany soukromí',
+    description: 'LEAPS vyvíjí systémy určování polohy a telemetrie v reálném čase založené na Ultra-Wideband — přesné určování polohy a přenos dat pro sklady, nemocnice, továrny a další.',
+    stayConnected: 'Zůstaňte ve spojení',
+    stayUpToDate: 'Zůstaňte s námi v obraze.',
+    signUp: 'Přihlásit se',
   },
   cta: {
     title: 'Potřebujete pomoc?',
@@ -56,6 +61,75 @@ export default {
   home: {
     heroTitle: 'Objevte nové hodnoty pro vaše podnikání pomocí technologie Ultra-Wideband',
     heroSubtitle: 'Využijte technologii Ultra-Wideband ve svých produktech a každodenním provozu k nalezení nových hodnot, které žádná jiná bezdrátová technologie nedokáže díky robustní a bezpečné přesnosti určování polohy.',
+    hero: {
+      slides: [
+        {
+          kicker: 'Technologie Ultra-Wideband',
+          title: 'Objevte nové hodnoty pro vaše podnikání.',
+          subtitle: 'Robustní a bezpečná přesnost určování polohy, kterou žádná jiná bezdrátová technologie nenabízí.',
+          cta: 'Objevte naše řešení',
+          link: '/solutions',
+        },
+        {
+          kicker: 'Vývojový kit UDK',
+          title: 'Začněte navrhovat s all-in-one UWB kitem.',
+          subtitle: 'Vyhodnoťte FiRa, TDoA, TWR a telemetrii dat s demo kitem Ultra-Wideband připraveným k okamžitému použití.',
+          cta: 'Naše produkty',
+          link: '/our-products',
+        },
+        {
+          kicker: 'LEAPS RTLS',
+          title: 'RTLS softwarový stack připravený pro produkci.',
+          subtitle: 'Firmware, gateway, server a mobilní nástroje — navržené pro Qorvo UWB hardware.',
+          cta: 'Naše technologie',
+          link: '/solutions#technology',
+        },
+      ],
+    },
+    chips: {
+      title: 'Prozkoumejte naše řešení',
+      items: [
+        { label: 'Sklady', path: '/our-projects' },
+        { label: 'Nemocnice', path: '/our-projects' },
+        { label: 'Továrny', path: '/our-projects' },
+        { label: 'RTLS řešení', path: '/solutions' },
+        { label: 'Technologie UWB', path: '/solutions#technology' },
+        { label: 'UDK kit', path: '/our-products' },
+        { label: 'Podpora', path: '/support' },
+      ],
+    },
+    resources: {
+      title: 'Doporučené zdroje',
+      labels: ['Řešení', 'Technologie', 'Produkty', 'Služby'],
+      docsCard: { label: 'Dokumentace', title: 'Prozkoumejte technologii LEAPS do hloubky', cta: 'Procházet dokumentaci' },
+    },
+    designHub: {
+      title: 'Postaveno pro přesnost, navrženo pro škálování',
+      linkText: 'Prozkoumat dokumentaci',
+      items: [
+        { id: 'modular', title: 'Modulární', text: 'Jeden modul, jeden firmware — konfigurovatelný v různých režimech a profilech.' },
+        { id: 'secure', title: 'Bezpečný', text: 'Navrženo od základů se silným důrazem na bezpečnost a soukromí.' },
+        { id: 'versatile', title: 'Všestranný', text: 'Od husté vnitřní navigace po aplikace s dlouhou výdrží baterie.' },
+        { id: 'simple', title: 'Jednoduchý', text: 'Snadné nastavení a široká škála API pro bezproblémovou integraci.' },
+      ],
+    },
+    techBanner: {
+      title: 'Vyhodnoťte UWB s kitem UDK',
+      text: 'All-in-one vývojový kit Ultra-Wideband — FiRa, TDoA, TWR a telemetrie dat, připravený k použití ihned po vybalení.',
+      cta: 'Naše produkty',
+    },
+    stories: {
+      title: 'Podívejte se, jak RTLS řešení promění váš provoz',
+      subtitle: 'Přesné sledování majetku, lidí a vybavení v reálném čase — pomáhá firmám získat hlubší přehled, zvýšit efektivitu a bezpečnost.',
+      cta: 'Prozkoumat projekty',
+    },
+    institutional: {
+      kicker: 'Jsme LEAPS',
+      title: 'Objevujeme nové hodnoty všude kolem vás',
+      text: 'LEAPS, založený v roce 2016 v České republice, navrhuje a vyvíjí moduly Qorvo DWM1001, DWM3001 a PANS RTLS — dodává technologii Ultra-Wideband a designové služby společnostem z žebříčku Fortune 500 po celém světě.',
+      cta: 'Zjistit více',
+    },
+    logoStrip: { title: 'Objednejte u autorizovaných distributorů' },
     whyLabel: 'Proč LEAPS',
     whyTitle: 'Objevte nové hodnoty pro vaše podnikání',
     whySubtitle: 'Přesné určování polohy a telemetrie dat v reálném čase pro vaše aplikace založené na robustní bezdrátové technologii Ultra-wideband.',
@@ -106,6 +180,14 @@ export default {
       { id: 'unique', title: 'Unikátní', description: 'LEAPS RTLS je unikátní švýcarský nůž pro přesné určování polohy a telemetrii dat v reálném čase. Malý, všestranný modul poskytuje flexibilitu a skvělou návratnost investic.' },
       { id: 'proven', title: 'Ověřený', description: 'LEAPS RTLS vytvořili tvůrci Qorvo DWM1001 a PANS RTLS prostřednictvím týmu spolehlivých a zkušených expertů, kterým důvěřuje Qorvo.' },
     ],
+  },
+  quickstart: {
+    quickstart: 'Rychlý start',
+    quickstartSub: 'Začněte navrhovat s LEAPS',
+    docs: 'Dokumentace',
+    store: 'Obchod',
+    forum: 'Fórum',
+    support: 'Podpora',
   },
   products: {
     heroTitle: 'All-in-One Ultra-Wideband Development Kit',

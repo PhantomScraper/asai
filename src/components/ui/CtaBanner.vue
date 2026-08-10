@@ -44,13 +44,13 @@ const { t } = useI18n()
 
 <style scoped>
 .cta-banner { padding: clamp(2.5rem, 6vw, 4rem) 0; }
-.cta-banner__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.75rem, 4vw, 3rem); background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); border-radius: var(--radius-xl); box-shadow: var(--shadow-glow); }
-.cta-banner__text h2 { font-family: var(--font-display); font-size: clamp(1.375rem, 3vw, 1.75rem); font-weight: 700; color: white; margin-bottom: 0.5rem; }
+.cta-banner__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.75rem, 4vw, 3rem); background: var(--gradient-blue); border-radius: var(--radius-md); box-shadow: var(--shadow-glow); }
+.cta-banner__text h2 { font-family: var(--font-display); font-size: clamp(1.375rem, 3vw, 1.75rem); font-weight: 500; color: white; margin-bottom: 0.5rem; }
 .cta-banner__text p { color: rgba(255, 255, 255, 0.85); max-width: 480px; line-height: 1.6; }
 .cta-banner__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.cta-banner__inner .btn-primary { background: white; color: var(--color-primary); box-shadow: none; }
+.cta-banner__inner .btn-primary { background: white; color: var(--color-primary-dark); box-shadow: none; }
 .cta-banner__inner .btn-primary:hover { background: rgba(255, 255, 255, 0.9); }
-.cta-banner__secondary { border-color: white; color: white; }
-.cta-banner__secondary:hover { background: white; color: var(--color-primary); }
+.cta-banner__secondary { background: transparent; border-color: white; color: white; }
+.cta-banner__secondary:hover { background: white; color: var(--color-primary-dark); }
 @media (max-width: 640px) { .cta-banner__actions { width: 100%; } .cta-banner__actions .btn { flex: 1; min-width: 140px; } }
 </style>

@@ -1,4 +1,19 @@
 /** Product & solution visuals from docs.leapslabs.com and Pastel design prototype */
+
+/** Photos keep their natural colors; PNG illustrations carry the old red brand
+ *  accents and get re-toned blue via the global .recolor-blue filter. */
+export const isPhoto = (src) => /\.jpe?g$/i.test(src)
+
+/** Diagrams whose blue tone is baked into the file itself (selective recolor that
+ *  preserves embedded device photos/logos) — must NOT get the CSS filter again. */
+const preToned = new Set([
+  '/images/portfolio/rtls-stack.png',
+  '/images/docs/leaps-architect-solution.png',
+  '/images/portfolio/uwb-comparison.png',
+])
+
+export const needsRecolor = (src) => !isPhoto(src) && !preToned.has(src)
+
 export const productImages = {
   heroPortfolio: '/images/portfolio/solutions-isometric.png',
   solutionsIsometric: '/images/portfolio/solutions-isometric.png',

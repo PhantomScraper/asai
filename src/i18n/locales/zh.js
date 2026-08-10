@@ -10,6 +10,7 @@ export default {
   },
   nav: {
     contactUs: '联系我们',
+    leapsAi: 'LEAPS AI',
     links: [
       { name: '产品', path: '/our-products' },
       { name: '项目', path: '/our-projects' },
@@ -46,6 +47,10 @@ export default {
     contact: '联系方式',
     copyright: 'Copyright © 2019–2026 by LEAPS',
     privacy: '隐私政策',
+    description: 'LEAPS 开发基于超宽带的实时定位与遥测系统 — 为仓库、医院、工厂等提供精确定位和数据遥测。',
+    stayConnected: '保持联系',
+    stayUpToDate: '与我们保持同步。',
+    signUp: '订阅',
   },
   cta: {
     title: '需要帮助吗？',
@@ -56,6 +61,75 @@ export default {
   home: {
     heroTitle: '借助超宽带技术为您的业务发掘新价值',
     heroSubtitle: '在您的产品和日常运营中使用超宽带技术，凭借其稳健而安全的定位精度，发掘其他无线技术无法实现的新价值。',
+    hero: {
+      slides: [
+        {
+          kicker: '超宽带技术',
+          title: '为您的业务发掘新价值。',
+          subtitle: '其他无线技术无法实现的稳健而安全的定位精度。',
+          cta: '探索解决方案',
+          link: '/solutions',
+        },
+        {
+          kicker: 'UDK 开发套件',
+          title: '使用一体化 UWB 套件开始设计。',
+          subtitle: '使用开箱即用的超宽带演示套件评估 FiRa、TDoA、TWR 和数据遥测。',
+          cta: '查看产品',
+          link: '/our-products',
+        },
+        {
+          kicker: 'LEAPS RTLS',
+          title: '可用于生产的 RTLS 软件栈。',
+          subtitle: '固件、网关、服务器和移动工具 — 专为 Qorvo UWB 硬件设计。',
+          cta: '查看技术',
+          link: '/solutions#technology',
+        },
+      ],
+    },
+    chips: {
+      title: '探索我们的解决方案',
+      items: [
+        { label: '仓库', path: '/our-projects' },
+        { label: '医院', path: '/our-projects' },
+        { label: '工厂', path: '/our-projects' },
+        { label: 'RTLS 解决方案', path: '/solutions' },
+        { label: 'UWB 技术', path: '/solutions#technology' },
+        { label: 'UDK 套件', path: '/our-products' },
+        { label: '支持', path: '/support' },
+      ],
+    },
+    resources: {
+      title: '精选资源',
+      labels: ['解决方案', '技术', '产品', '服务'],
+      docsCard: { label: '文档', title: '深入了解 LEAPS 技术', cta: '浏览文档' },
+    },
+    designHub: {
+      title: '为精度而构建，为规模而设计',
+      linkText: '浏览文档',
+      items: [
+        { id: 'modular', title: '模块化', text: '一个模块、一套固件 — 可配置不同模式和配置文件。' },
+        { id: 'secure', title: '安全', text: '从零开始设计，高度重视安全与隐私。' },
+        { id: 'versatile', title: '多用途', text: '从高密度室内导航到长电池寿命的追踪应用。' },
+        { id: 'simple', title: '简单', text: '设置简便，丰富的 API 让集成畅通无阻。' },
+      ],
+    },
+    techBanner: {
+      title: '使用 UDK 评估 UWB',
+      text: '一体化超宽带开发套件 — FiRa、TDoA、TWR 和数据遥测，开箱即用。',
+      cta: '查看产品',
+    },
+    stories: {
+      title: '了解 RTLS 解决方案如何变革您的运营',
+      subtitle: '实时精确追踪资产、人员和设备 — 帮助企业获得更深入的洞察，提高效率并增强安全性。',
+      cta: '探索项目',
+    },
+    institutional: {
+      kicker: '我们是 LEAPS',
+      title: '在您身边，发掘新价值',
+      text: 'LEAPS 于 2016 年在捷克共和国成立，设计并开发了 Qorvo 的 DWM1001、DWM3001 模块和 PANS RTLS — 为全球财富 500 强企业提供超宽带技术和设计服务。',
+      cta: '了解更多',
+    },
+    logoStrip: { title: '从授权分销商订购' },
     whyLabel: '为何选择 LEAPS',
     whyTitle: '为您的业务发掘新价值',
     whySubtitle: '基于稳健的超宽带无线技术，为您的应用提供实时的高精度定位与数据遥测。',
@@ -106,6 +180,14 @@ export default {
       { id: 'unique', title: '独特', description: 'LEAPS RTLS 是用于实时高精度定位与数据遥测的独特“瑞士军刀”。小巧而多功能的模块带来灵活性和出色的投资回报。' },
       { id: 'proven', title: '可靠', description: 'LEAPS RTLS 由 Qorvo DWM1001 与 PANS RTLS 的创造者打造，由一支深受 Qorvo 信赖、可靠且经验丰富的专家团队实现。' },
     ],
+  },
+  quickstart: {
+    quickstart: '快速入门',
+    quickstartSub: '立即开始使用 LEAPS 设计',
+    docs: '文档',
+    store: '商店',
+    forum: '论坛',
+    support: '支持',
   },
   products: {
     heroTitle: '一体化超宽带开发套件',

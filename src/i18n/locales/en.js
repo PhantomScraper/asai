@@ -10,6 +10,7 @@ export default {
   },
   nav: {
     contactUs: 'Contact Us',
+    leapsAi: 'LEAPS AI',
     links: [
       { name: 'Products', path: '/our-products' },
       { name: 'Projects', path: '/our-projects' },
@@ -46,6 +47,10 @@ export default {
     contact: 'Contact',
     copyright: 'Copyright © 2019–2026 by LEAPS',
     privacy: 'Privacy Policy',
+    description: 'LEAPS builds Real-Time Location and Real-Time Telemetry systems based on Ultra-Wideband — accurate positioning and data telemetry for warehouses, hospitals, factories, and beyond.',
+    stayConnected: 'Stay Connected',
+    stayUpToDate: 'Stay up to date with us.',
+    signUp: 'Sign Up',
   },
   cta: {
     title: 'Need any help?',
@@ -56,6 +61,75 @@ export default {
   home: {
     heroTitle: 'Locate new values for your business using the Ultra-Wideband technology',
     heroSubtitle: 'Use the Ultra-Wideband technology in your products and daily operation to find new values that no other wireless technology can do thanks to its robust and secure location accuracy.',
+    hero: {
+      slides: [
+        {
+          kicker: 'Ultra-Wideband Technology',
+          title: 'Locate new values for your business.',
+          subtitle: 'Robust and secure location accuracy that no other wireless technology can deliver.',
+          cta: 'Discover our solutions',
+          link: '/solutions',
+        },
+        {
+          kicker: 'UDK Development Kit',
+          title: 'Start designing with the all-in-one UWB kit.',
+          subtitle: 'Evaluate FiRa, TDoA, TWR, and data telemetry with the ready-to-use Ultra-Wideband demo kit.',
+          cta: 'See our products',
+          link: '/our-products',
+        },
+        {
+          kicker: 'LEAPS RTLS',
+          title: 'A production-ready RTLS software stack.',
+          subtitle: 'Firmware, gateway, server, and mobile tools — designed for Qorvo UWB hardware.',
+          cta: 'See our technology',
+          link: '/solutions#technology',
+        },
+      ],
+    },
+    chips: {
+      title: 'Explore our Solutions',
+      items: [
+        { label: 'Warehouses', path: '/our-projects' },
+        { label: 'Hospitals', path: '/our-projects' },
+        { label: 'Factories', path: '/our-projects' },
+        { label: 'RTLS Solutions', path: '/solutions' },
+        { label: 'UWB Technology', path: '/solutions#technology' },
+        { label: 'UDK Kit', path: '/our-products' },
+        { label: 'Support', path: '/support' },
+      ],
+    },
+    resources: {
+      title: 'Featured Resources',
+      labels: ['Solutions', 'Technology', 'Products', 'Services'],
+      docsCard: { label: 'Documentation', title: 'Explore LEAPS technology in depth', cta: 'Browse the docs' },
+    },
+    designHub: {
+      title: 'Built for precision, designed for scale',
+      linkText: 'Explore the documentation',
+      items: [
+        { id: 'modular', title: 'Modular', text: 'One module, one firmware — configurable in different modes and profiles.' },
+        { id: 'secure', title: 'Secure', text: 'Designed from scratch with a strong focus on security and privacy.' },
+        { id: 'versatile', title: 'Versatile', text: 'From dense indoor navigation to long battery-lifetime tracking applications.' },
+        { id: 'simple', title: 'Simple', text: 'Easy setup and a wide range of APIs for seamless integration.' },
+      ],
+    },
+    techBanner: {
+      title: 'Evaluate UWB with the UDK',
+      text: 'The all-in-one Ultra-Wideband development kit — FiRa, TDoA, TWR, and data telemetry, ready to use out of the box.',
+      cta: 'See our products',
+    },
+    stories: {
+      title: 'See how RTLS solutions transform your operations',
+      subtitle: 'Precise, real-time tracking of assets, people, and equipment — helping businesses gain deeper insights, improve efficiency, and enhance safety.',
+      cta: 'Explore our projects',
+    },
+    institutional: {
+      kicker: 'We are LEAPS',
+      title: 'Locating new values, all around you',
+      text: "Founded in 2016 in the Czech Republic, LEAPS designs and develops Qorvo's DWM1001, DWM3001 modules and PANS RTLS — supplying Ultra-Wideband technology and design services to Fortune 500 companies around the world.",
+      cta: 'Learn More',
+    },
+    logoStrip: { title: 'Order from authorized distributors' },
     whyLabel: 'Why LEAPS',
     whyTitle: 'Locate new values for your business',
     whySubtitle: 'Accurate positioning and data telemetry in real-time for your applications based on robust wireless Ultra-wideband technology.',
@@ -106,6 +180,14 @@ export default {
       { id: 'unique', title: 'Unique', description: 'LEAPS RTLS is a unique Swiss Army knife for accurate positioning and data telemetry in real-time. A small, versatile module provides flexibility and a great return on investment.' },
       { id: 'proven', title: 'Proven', description: "LEAPS RTLS was built by the creators of Qorvo's DWM1001 and PANS RTLS which was achieved through a team of reliable and experienced experts trusted by Qorvo." },
     ],
+  },
+  quickstart: {
+    quickstart: 'Quickstart',
+    quickstartSub: 'Start designing today with LEAPS',
+    docs: 'Documentation',
+    store: 'Store',
+    forum: 'Forum',
+    support: 'Support',
   },
   products: {
     heroTitle: 'All-in-One Ultra-Wideband Development Kit',

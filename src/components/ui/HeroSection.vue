@@ -39,6 +39,7 @@
             :src="imageSrc"
             :alt="imageAlt"
             class="hero__image"
+            :class="{ 'recolor-blue': needsRecolor(imageSrc) }"
             loading="eager"
           />
         </div>
@@ -60,6 +61,7 @@
 
 <script setup>
 import ProductShowcase from '@/components/ui/ProductShowcase.vue'
+import { needsRecolor } from '@/data/images'
 
 defineProps({
   title: { type: String, required: true },
@@ -91,7 +93,7 @@ defineProps({
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #f8f9fc 0%, #eef2f8 50%, #e8edf5 100%);
+  background: linear-gradient(120deg, #000 0%, #031e3e 55%, #0b3d6b 120%);
 }
 
 .hero__mesh {
@@ -101,8 +103,8 @@ defineProps({
   width: 70%;
   height: 80%;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(26, 79, 216, 0.06) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 T100 50' fill='none' stroke='%231a4fd8' stroke-width='0.3' opacity='0.15'/%3E%3C/svg%3E");
+    radial-gradient(circle at 20% 50%, rgba(0, 160, 223, 0.12) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 T100 50' fill='none' stroke='%2300a0df' stroke-width='0.3' opacity='0.3'/%3E%3C/svg%3E");
   background-size: 80px 80px;
   mask-image: linear-gradient(to left, black 30%, transparent 100%);
   opacity: 0.8;
@@ -111,7 +113,7 @@ defineProps({
 .hero__orb {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 160, 223, 0.22) 0%, transparent 70%);
 }
 
 .hero__orb--1 { width: 280px; height: 280px; top: 15%; right: 20%; animation: float 8s ease-in-out infinite; }
@@ -134,17 +136,17 @@ defineProps({
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 4.5vw, 3.25rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  color: var(--color-text);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: white;
   margin-bottom: 1.25rem;
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  color: var(--color-text-muted);
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.75;
   max-width: 560px;
   margin-bottom: 1.75rem;
@@ -161,7 +163,23 @@ defineProps({
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: white;
+}
+
+.hero__cta:hover {
+  color: var(--color-primary-light);
+}
+
+/* Dark-hero button treatments for view-provided actions */
+.hero__actions :deep(.btn-outline) {
+  background: transparent;
+  border-color: white;
+  color: white;
+}
+
+.hero__actions :deep(.btn-outline:hover) {
+  background: white;
+  color: var(--color-primary-dark);
 }
 
 .play-icon { font-size: 0.875rem; }
@@ -192,8 +210,17 @@ defineProps({
   filter: drop-shadow(0 20px 40px rgba(15, 20, 25, 0.12));
 }
 
+/* Scoped filter rules outrank the global .recolor-blue — recompose them here */
+.hero__image.recolor-blue {
+  filter: drop-shadow(0 20px 40px rgba(15, 20, 25, 0.12)) hue-rotate(197deg) saturate(1.05);
+}
+
 .hero__image-wrap--framed .hero__image {
   filter: none;
+}
+
+.hero__image-wrap--framed .hero__image.recolor-blue {
+  filter: hue-rotate(197deg) saturate(1.05);
 }
 
 .hero__illustration {

@@ -18,6 +18,10 @@
       </nav>
 
       <div class="header__actions">
+        <button type="button" class="btn btn-outline btn-sm header__ai" @click="openChat">
+          <span aria-hidden="true">✦</span>
+          {{ t('nav.leapsAi') }}
+        </button>
         <select
           :value="locale"
           class="header__lang header__lang--desktop"
@@ -28,7 +32,7 @@
             {{ opt.label }}
           </option>
         </select>
-        <RouterLink to="/about#contact" class="btn btn-primary header__cta" @click="closeMenu">
+        <RouterLink to="/about#contact" class="btn btn-primary btn-sm header__cta" @click="closeMenu">
           {{ t('nav.contactUs') }}
         </RouterLink>
         <button
@@ -103,6 +107,12 @@ const supportedLocales = locales
 const isScrolled = ref(false)
 const menuOpen = ref(false)
 const isMobile = ref(false)
+const chatOpen = useState('leaps-chat-open', () => false)
+
+const openChat = () => {
+  chatOpen.value = true
+  closeMenu()
+}
 
 const langLabel = computed(() => (locale.value === 'cs' ? 'Jazyk' : 'Language'))
 
@@ -149,13 +159,12 @@ onUnmounted(() => {
   right: 0;
   z-index: 1000;
   height: var(--header-height);
-  transition: all var(--transition);
+  background: white;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: box-shadow var(--transition);
 }
 
 .header--scrolled {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border-light);
   box-shadow: var(--shadow-sm);
 }
 
@@ -177,6 +186,8 @@ onUnmounted(() => {
 .header__logo img {
   height: 44px;
   width: auto;
+  /* Render the red logo black to mirror Qorvo's black wordmark */
+  filter: brightness(0);
 }
 
 .header__nav {
@@ -190,7 +201,7 @@ onUnmounted(() => {
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   border-radius: var(--radius-sm);
   transition: all var(--transition);
   position: relative;
@@ -198,7 +209,7 @@ onUnmounted(() => {
 
 .header__link:hover,
 .header__link--active {
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
 
 .header__link--active::after {
@@ -225,11 +236,12 @@ onUnmounted(() => {
 }
 
 .header__lang {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: white;
+  padding: 0.375rem 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
   color: var(--color-text);
   cursor: pointer;
 }
@@ -242,9 +254,15 @@ onUnmounted(() => {
   display: block;
 }
 
-.header__cta {
-  padding: 0.625rem 1.25rem;
-  font-size: 0.875rem;
+.header__ai span {
+  color: var(--color-primary);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1199px) {
+  .header__ai {
+    display: none;
+  }
 }
 
 .header__toggle {

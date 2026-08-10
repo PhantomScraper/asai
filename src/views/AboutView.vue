@@ -9,11 +9,18 @@
       :show-visual="true"
     />
 
-    <section class="section about__company">
-      <div class="container about__company-inner">
-        <img :src="productImages.aboutMark" alt="LEAPS" class="about__mark" loading="lazy" />
-        <h2 class="about__company-name">{{ t('about.companyName') }}</h2>
-        <p class="about__company-text">{{ t('about.intro') }}</p>
+    <section class="section about__stats">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">{{ t('about.milestonesLabel') }}</span>
+          <h2 class="section-title">{{ t('about.milestonesTitle') }}</h2>
+        </div>
+        <div class="grid-3 about__stats-grid">
+          <div v-for="item in tm('about.milestones')" :key="item.year" class="about__stat">
+            <span class="about__stat-year">{{ item.year }}</span>
+            <p class="about__stat-text">{{ item.text }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -21,9 +28,11 @@
       <div class="container">
         <div class="about__values-grid">
           <article v-for="value in tm('about.values')" :key="value.title" class="card about__value-card">
-            <img :src="value.icon" :alt="value.title" class="about__value-icon" loading="lazy" />
-            <h3>{{ value.title }}</h3>
-            <p>{{ value.description }}</p>
+            <img :src="value.icon" :alt="value.title" class="about__value-icon recolor-blue" loading="lazy" />
+            <div class="about__value-body">
+              <h3>{{ value.title }}</h3>
+              <p>{{ value.description }}</p>
+            </div>
           </article>
         </div>
       </div>
@@ -36,7 +45,7 @@
           <h2 class="section-title">{{ t('about.teamTitle') }}</h2>
         </div>
         <div class="about__team-grid">
-          <article v-for="member in team" :key="member.name" class="card about__member">
+          <article v-for="member in team" :key="member.name" class="about__member">
             <img :src="member.photo" :alt="member.name" class="about__member-photo" loading="lazy" />
             <h3>{{ member.displayName || member.name }}</h3>
             <p class="about__member-role">{{ member.role }}</p>
@@ -45,31 +54,16 @@
               :href="member.linkedin"
               target="_blank"
               rel="noopener noreferrer"
-              class="about__member-link"
+              class="chip about__member-chip"
               :aria-label="`${t('about.linkedinLabel')} — ${member.name}`"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.063 2.063 0 01-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
               LinkedIn
             </a>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section about__milestones">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">{{ t('about.milestonesLabel') }}</span>
-          <h2 class="section-title">{{ t('about.milestonesTitle') }}</h2>
-        </div>
-        <ol class="about__timeline">
-          <li v-for="item in tm('about.milestones')" :key="item.year" class="about__timeline-item">
-            <span class="about__timeline-year">{{ item.year }}</span>
-            <p>{{ item.text }}</p>
-          </li>
-        </ol>
       </div>
     </section>
 
@@ -89,7 +83,7 @@
           <p v-if="submitted" class="about__success">{{ t('common.contactSuccess') }}</p>
         </form>
 
-        <div class="about__contact-info card">
+        <div class="about__contact-info">
           <h2 class="about__contact-title">{{ t('about.contactTitle') }}</h2>
           <address class="about__contact-details">
             <p><strong>{{ contact.company }}</strong></p>
@@ -101,15 +95,12 @@
         </div>
       </div>
     </section>
-
-    <CtaBanner primary-link="/about#contact" />
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
 import HeroSection from '@/components/ui/HeroSection.vue'
-import CtaBanner from '@/components/ui/CtaBanner.vue'
 import { useI18n } from '@/i18n'
 import { team, contact } from '@/data/site'
 import { productImages } from '@/data/images'
@@ -126,38 +117,39 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
-.about__company {
+/* Milestone stat strip — Qorvo-style left-rule figures */
+.about__stats {
   background: white;
-  padding-top: 2rem;
+  padding: clamp(2.5rem, 5vw, 3.5rem) 0;
 }
 
-.about__company-inner {
-  max-width: 760px;
+.about__stats-grid {
+  max-width: 960px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.about__mark {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1.25rem;
-  object-fit: contain;
+.about__stat {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.25rem;
 }
 
-.about__company-name {
+.about__stat-year {
+  display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 1.25rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.5rem;
 }
 
-.about__company-text {
+.about__stat-text {
+  font-size: 0.9375rem;
   color: var(--color-text-muted);
-  line-height: 1.8;
-  font-size: 1.0625rem;
+  line-height: 1.65;
 }
 
+/* Values — horizontal icon cards */
 .about__values {
   background: var(--color-bg);
 }
@@ -169,33 +161,34 @@ const handleSubmit = () => {
 }
 
 .about__value-card {
-  text-align: center;
-  padding: clamp(1.75rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
 }
 
 .about__value-icon {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 1.25rem;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 }
 
-.about__value-card h3 {
+.about__value-body h3 {
   font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text);
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.625rem;
 }
 
-.about__value-card p {
+.about__value-body p {
   font-size: 0.9375rem;
   color: var(--color-text-muted);
   line-height: 1.7;
 }
 
+/* Team — airy borderless photo cards */
 .about__team {
   background: white;
 }
@@ -203,30 +196,29 @@ const handleSubmit = () => {
 .about__team-grid {
   display: flex;
   justify-content: center;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  gap: clamp(1.5rem, 4vw, 3rem);
   flex-wrap: wrap;
 }
 
 .about__member {
   text-align: center;
-  width: min(100%, 280px);
-  padding: 1.75rem;
+  width: min(100%, 240px);
 }
 
 .about__member-photo {
-  width: 168px;
-  height: 168px;
+  display: block;
+  width: 112px;
+  height: 112px;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0 auto 1.25rem;
-  border: 3px solid var(--color-border-light);
+  margin-inline: auto;
+  margin-bottom: 1rem;
 }
 
 .about__member h3 {
   font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-size: 1.0625rem;
+  font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
@@ -236,59 +228,14 @@ const handleSubmit = () => {
   margin-bottom: 1rem;
 }
 
-.about__member-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-primary);
+.about__member-chip {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.875rem;
 }
 
-.about__member-link:hover {
-  text-decoration: underline;
-}
-
-.about__milestones {
-  background: var(--color-bg);
-}
-
-.about__timeline {
-  max-width: 720px;
-  margin: 0 auto;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.about__timeline-item {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 1.25rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--color-border-light);
-}
-
-.about__timeline-item:last-child {
-  border-bottom: 0;
-}
-
-.about__timeline-year {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-primary);
-}
-
-.about__timeline-item p {
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  font-size: 0.9375rem;
-}
-
+/* Contact — light form beside navy info card */
 .about__contact {
-  background: white;
+  background: var(--color-bg);
 }
 
 .about__contact-grid {
@@ -298,11 +245,10 @@ const handleSubmit = () => {
   align-items: start;
 }
 
-.about__form-title,
-.about__contact-title {
+.about__form-title {
   font-family: var(--font-display);
   font-size: clamp(1.375rem, 3vw, 1.75rem);
-  font-weight: 700;
+  font-weight: 500;
   margin: 0.5rem 0 0.75rem;
 }
 
@@ -319,16 +265,6 @@ const handleSubmit = () => {
   padding: clamp(1.5rem, 3vw, 2rem);
 }
 
-.about__contact-info {
-  padding: clamp(1.5rem, 3vw, 2rem);
-}
-
-.about__form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
 .about__form input,
 .about__form textarea {
   width: 100%;
@@ -339,18 +275,47 @@ const handleSubmit = () => {
   font-size: 0.9375rem;
 }
 
+.about__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.about__contact-info {
+  background: var(--color-navy);
+  border-radius: var(--radius-sm);
+  color: white;
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.about__contact-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 1rem;
+}
+
 .about__contact-details {
   font-style: normal;
 }
 
 .about__contact-details p {
   margin-bottom: 0.5rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
 }
 
+.about__contact-details strong {
+  color: white;
+}
+
 .about__contact-details a {
-  color: var(--color-primary);
+  color: white;
+}
+
+.about__contact-details a:hover {
+  text-decoration: underline;
 }
 
 .about__success {
@@ -370,9 +335,10 @@ const handleSubmit = () => {
 }
 
 @media (max-width: 560px) {
-  .about__timeline-item {
-    grid-template-columns: 1fr;
-    gap: 0.375rem;
+  .about__value-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
 </style>
