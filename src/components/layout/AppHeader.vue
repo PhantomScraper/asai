@@ -32,9 +32,18 @@
             {{ opt.label }}
           </option>
         </select>
-        <RouterLink to="/about#contact" class="btn btn-primary btn-sm header__cta" @click="closeMenu">
+        <RouterLink to="/about#contact" class="btn btn-outline btn-sm header__cta" @click="closeMenu">
           {{ t('nav.contactUs') }}
         </RouterLink>
+        <a
+          :href="externalLinks.store"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-sm header__cta"
+        >
+          {{ t('nav.store') }}
+          <span aria-hidden="true">→</span>
+        </a>
         <button
           class="header__toggle"
           :aria-expanded="menuOpen"
@@ -87,9 +96,19 @@
             </select>
           </div>
 
-          <RouterLink to="/about#contact" class="btn btn-primary mobile-menu-cta" @click="closeMenu">
+          <RouterLink to="/about#contact" class="btn btn-outline mobile-menu-cta" @click="closeMenu">
             {{ t('nav.contactUs') }}
           </RouterLink>
+          <a
+            :href="externalLinks.store"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary mobile-menu-cta"
+            @click="closeMenu"
+          >
+            {{ t('nav.store') }}
+            <span aria-hidden="true">→</span>
+          </a>
         </nav>
       </template>
     </Teleport>
@@ -99,6 +118,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n, supportedLocales as locales } from '@/i18n'
+import { externalLinks } from '@/data/site'
 
 const route = useRoute()
 const { locale, setLocale, t, navLinks } = useI18n()
@@ -186,8 +206,6 @@ onUnmounted(() => {
 .header__logo img {
   height: 44px;
   width: auto;
-  /* Render the red logo black to mirror Qorvo's black wordmark */
-  filter: brightness(0);
 }
 
 .header__nav {
@@ -205,6 +223,7 @@ onUnmounted(() => {
   border-radius: var(--radius-sm);
   transition: all var(--transition);
   position: relative;
+  white-space: nowrap;
 }
 
 .header__link:hover,

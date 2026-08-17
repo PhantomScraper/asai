@@ -5,7 +5,6 @@
         :src="primaryImage"
         :alt="primaryAlt"
         class="showcase__primary"
-        :class="{ 'recolor-blue': needsRecolor(primaryImage) }"
         loading="eager"
       />
       <img
@@ -13,7 +12,6 @@
         :src="secondaryImage"
         :alt="secondaryAlt"
         class="showcase__secondary"
-        :class="{ 'recolor-blue': needsRecolor(secondaryImage) }"
         loading="lazy"
       />
     </div>
@@ -22,7 +20,6 @@
 </template>
 
 <script setup>
-import { needsRecolor } from '@/data/images'
 
 defineProps({
   primaryImage: { type: String, required: true },

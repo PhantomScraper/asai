@@ -3,28 +3,25 @@
     <div class="container">
       <div class="stories__header">
         <div>
+          <span class="section-label">{{ t('home.stories.label') }}</span>
           <h2 class="section-title">{{ t('home.stories.title') }}</h2>
           <p class="stories__subtitle">{{ t('home.stories.subtitle') }}</p>
         </div>
-        <RouterLink to="/our-projects" class="btn btn-primary stories__cta">{{ t('home.stories.cta') }}</RouterLink>
+        <RouterLink to="/projects" class="btn btn-primary stories__cta">{{ t('home.stories.cta') }}</RouterLink>
       </div>
-      <div class="grid-3">
+      <div class="stories__grid">
         <RouterLink
-          v-for="(app, i) in tm('projects.applications')"
-          :key="app.title"
-          to="/our-projects"
+          v-for="story in tm('projects.stories')"
+          :key="story.name"
+          to="/projects"
           class="stories__card"
         >
-          <span class="stories__media">
-            <img :src="applicationImages[i]" :class="{ 'recolor-mono-blue': !isPhoto(applicationImages[i]) }" alt="" loading="lazy" />
+          <span class="card__label">{{ story.industry }}</span>
+          <span class="stories__title-row">
+            <h3>{{ story.name }}</h3>
+            <span class="arrow-circle" aria-hidden="true">→</span>
           </span>
-          <span class="stories__body">
-            <span class="stories__title-row">
-              <h3>{{ app.title }}</h3>
-              <span class="arrow-circle" aria-hidden="true">→</span>
-            </span>
-            <p>{{ app.description }}</p>
-          </span>
+          <p>{{ story.help }}</p>
         </RouterLink>
       </div>
     </div>
@@ -33,7 +30,6 @@
 
 <script setup>
 import { useI18n } from '@/i18n'
-import { applicationImages, isPhoto } from '@/data/images'
 
 const { t, tm } = useI18n()
 </script>
@@ -45,7 +41,7 @@ const { t, tm } = useI18n()
 
 .stories__header {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
@@ -63,40 +59,25 @@ const { t, tm } = useI18n()
   flex-shrink: 0;
 }
 
+.stories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
 .stories__card {
   display: flex;
   flex-direction: column;
   background: white;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  overflow: hidden;
+  padding: 1.25rem;
   transition: box-shadow var(--transition), transform var(--transition);
 }
 
 .stories__card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-}
-
-.stories__media {
-  display: block;
-  aspect-ratio: 16 / 9;
-  background: var(--color-bg);
-  overflow: hidden;
-}
-
-.stories__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* The crawled application images carry banner text along their top edge — keep the illustration side */
-  object-position: center bottom;
-}
-
-.stories__body {
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem;
 }
 
 .stories__title-row {
@@ -115,8 +96,12 @@ const { t, tm } = useI18n()
 }
 
 .stories__card p {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
   line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>

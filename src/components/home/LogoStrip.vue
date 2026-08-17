@@ -1,7 +1,7 @@
 <template>
   <section class="lstrip">
     <div class="container lstrip__inner">
-      <RouterLink to="/our-products" class="lstrip__title">
+      <RouterLink to="/products-services#udk" class="lstrip__title">
         {{ t('home.logoStrip.title') }}
         <span aria-hidden="true">→</span>
       </RouterLink>

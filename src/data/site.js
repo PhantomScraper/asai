@@ -1,8 +1,7 @@
 export const navLinks = [
-  { name: 'Products', path: '/our-products' },
-  { name: 'Projects', path: '/our-projects' },
-  { name: 'Services', path: '/our-services' },
   { name: 'Solutions', path: '/solutions' },
+  { name: 'Products & Services', path: '/products-services' },
+  { name: 'Projects', path: '/projects' },
   { name: 'Support', path: '/support' },
   { name: 'About', path: '/about' },
 ]
@@ -13,6 +12,20 @@ export const externalLinks = {
   store: 'https://store.leapslabs.com/',
   udkStart: 'https://docs.leapslabs.com/udk-start',
   qorvoUwb: 'https://www.qorvo.com/innovation/ultra-wideband/technology',
+  comparison: 'https://docs.leapslabs.com/leaps-solutions/comparison/',
+}
+
+/** Datasheets: the UDK sheet lives on docs.leapslabs.com; the 2026 product range
+ *  sheets are hosted locally until they are published on the docs site. */
+export const datasheets = {
+  lg1: '/datasheets/leaps-lg1-datasheet.pdf',
+  lg2: '/datasheets/leaps-lg2-datasheet.pdf',
+  lt1: '/datasheets/leaps-lt1-datasheet.pdf',
+  lt2: '/datasheets/leaps-lt2-datasheet.pdf',
+  lt3: '/datasheets/leaps-lt3-datasheet.pdf',
+  lt4: '/datasheets/leaps-lt4-datasheet.pdf',
+  rtls: '/datasheets/leaps-rtls-datasheet.pdf',
+  udk: 'https://docs.leapslabs.com/_static/_pdfversion/udk-datasheet.pdf',
 }
 
 export const features = [
@@ -60,30 +73,6 @@ export const features = [
   },
 ]
 
-export const helpCards = [
-  {
-    title: 'Products',
-    description:
-      'Do you have a great business plan and need a technology capable of accurate positioning and/or data telemetry in real-time? Adopt LEAPS RTLS for a life-changing experience.',
-    link: '/our-products',
-    linkText: 'See Products',
-  },
-  {
-    title: 'Services',
-    description:
-      'Need to customize LEAPS RTLS or PANS RTLS? Use our expertise to shorten the time to market.',
-    link: '/our-services',
-    linkText: 'See Services',
-  },
-  {
-    title: 'Support',
-    description:
-      'Are you planning on adopting LEAPS RTLS or PANS RTLS and want to ensure your project works out well? Subscribe to our technical support program.',
-    link: '/support',
-    linkText: 'See Options',
-  },
-]
-
 export const productDemos = [
   'Nearby Interaction Demo with an iPhone',
   'Locate Device Using Angle-of-Arrival Demo',
@@ -113,6 +102,8 @@ export const kitIncludes = [
 
 export const partNumber = 'QM33120WDK2 = UDK'
 
+/** UDK (QM33120WDK2) authorized distributors — list and links confirmed by LEAPS
+ *  in the agency review (no Richardson Electronics: currently not available). */
 export const distributors = [
   {
     name: 'DigiKey',
@@ -120,29 +111,14 @@ export const distributors = [
     logo: '/images/distributors/82b2eb4d48d54a16b8f7163841763bc6.png',
   },
   {
-    name: 'Crowd Supply',
-    url: 'https://www.crowdsupply.com/qorvo/qm33120wdk2-uwb-dev-kit',
-    logo: '/images/distributors/922068330975499aa31c89268bba5b7e.png',
-  },
-  {
     name: 'Mouser',
     url: 'https://eu.mouser.com/ProductDetail/Qorvo/QM33120WDK2',
     logo: '/images/distributors/a40f58c14bf742908df1fd53a25aeb57.png',
   },
   {
-    name: 'Rell Power',
-    url: 'https://www.rellpower.com/store/qm33120wdk2.html',
-    logo: '/images/distributors/f161585b1ca844759144f8476907304e.png',
-  },
-  {
-    name: 'Avnet Silica',
-    url: 'https://my.avnet.com/silica/product/qorvo/qm33120wdk2/silica-009295484/',
+    name: 'Avnet',
+    url: 'https://www.avnet.com/americas/product/qorvo/qm33120wdk2/evolve-121598055/',
     logo: '/images/distributors/ed819279764b45768bd671a2cd68fe11.png',
-  },
-  {
-    name: 'NAC Semi',
-    url: 'https://store.nacsemi.com/Products/Detail?part=QM33120WDK2',
-    logo: '/images/distributors/b4227ceffb2c483186396c40b87fdc12.png',
   },
   {
     name: 'RFMW',
@@ -150,14 +126,14 @@ export const distributors = [
     logo: '/images/distributors/e67076c605bd4115ac42ca2baa91d17b.png',
   },
   {
-    name: 'Qorvo Store',
-    url: 'https://store.qorvo.com/products/detail/qm33120wdk2-qorvo/859631/',
-    logo: '/images/distributors/e167dac274d54df2afcd9a245e915bbc.png',
-  },
-  {
     name: 'Symmetry Electronics',
     url: 'https://www.symmetryelectronics.com/products/qorvo/qm33120wdk2/',
     logo: '/images/distributors/5656c95bc2af415e8ca118aa4ac588c0.png',
+  },
+  {
+    name: 'Qorvo',
+    url: 'https://www.qorvo.com/products/p/QM33120WDK2',
+    logo: '/images/distributors/e167dac274d54df2afcd9a245e915bbc.png',
   },
 ]
 
@@ -378,10 +354,9 @@ export const contact = {
   web: 'https://www.leapslabs.com',
 }
 
+/** LinkedIn only, per LEAPS feedback in the agency review */
 export const socialLinks = [
   { name: 'LinkedIn', url: 'https://www.linkedin.com/company/leapslabs', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/leapslabs', icon: 'twitter' },
-  { name: 'YouTube', url: 'https://www.youtube.com/channel/UCEFoXAsBV9MDvoBKrEvdwIg', icon: 'youtube' },
 ]
 
 export const supportResources = [
@@ -415,4 +390,140 @@ export const docSections = [
   { title: 'Hardware', url: 'https://docs.leapslabs.com/hardware/' },
   { title: 'FAQ', url: 'https://docs.leapslabs.com/faq/' },
   { title: 'Support', url: 'https://docs.leapslabs.com/support/' },
+]
+
+/* ------------------------------------------------------------------ */
+/* 2026 hardware range (UWB channels 5 & 9, FCC/CE/ARIB Japan)         */
+/* Language-neutral spec values from the official device datasheets;   */
+/* names and descriptions live in the i18n locale files under          */
+/* productsServices.anchors.items / productsServices.tags.items.       */
+/* ------------------------------------------------------------------ */
+
+export const anchorSpecs = [
+  {
+    id: 'lg1',
+    partNumber: 'LR-LG1A1',
+    image: '/images/hardware/lg1.png',
+    datasheet: datasheets.lg1,
+    specs: {
+      power: '7–32 VDC / USB 5 V',
+      backhaul: 'WiFi 2.4 GHz b/g/n',
+      bluetooth: 'BLE 5.2',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-40 °C … +85 °C',
+      size: '85 × 57 × 17 mm · 50 g',
+      ip: 'IP30',
+      mounting: '1/4″ camera mount',
+    },
+  },
+  {
+    id: 'lg2',
+    partNumber: 'LR-LG2A1',
+    image: '/images/hardware/lg2.png',
+    datasheet: datasheets.lg2,
+    specs: {
+      power: 'PoE 802.3af / 7–32 VDC / USB 5 V',
+      backhaul: 'Daisy-chained PoE Ethernet + WiFi 2.4 GHz',
+      bluetooth: 'BLE 5.2',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-40 °C … +85 °C',
+      size: '127 × 98 × 41 mm · 135 g',
+      ip: 'IP30',
+      mounting: '1/4″ camera mount / 4-screw bracket',
+    },
+  },
+  {
+    id: 'lgx',
+    partNumber: 'LR-LGxA1',
+    image: '/images/hardware/lg2.png',
+    datasheet: null,
+    specs: {
+      power: 'PoE / external source',
+      backhaul: 'Daisy-chained PoE Ethernet + WiFi, embedded Linux',
+      bluetooth: 'BLE',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-40 °C … +85 °C',
+      size: '—',
+      ip: '—',
+      mounting: '—',
+    },
+  },
+]
+
+export const tagSpecs = [
+  {
+    id: 'lt1',
+    partNumber: 'LR-LT1A1',
+    image: '/images/hardware/lt1.png',
+    datasheet: datasheets.lt1,
+    specs: {
+      battery: 'Coin-cell CR2477, 1000 mAh',
+      batteryLife: 'UL-TDoA 12 mo – 5 y · TWR 3 mo – 3 y',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-30 °C … +85 °C',
+      size: '68 × 50 × 18 mm · 38 g',
+      ip: 'IP66',
+      mounting: '2 screws',
+    },
+  },
+  {
+    id: 'lt2',
+    partNumber: 'LR-LT2A1',
+    image: '/images/hardware/lt2.png',
+    datasheet: datasheets.lt2,
+    specs: {
+      battery: 'Rechargeable LiPo 3.7 V, 600 mAh (USB)',
+      batteryLife: 'UL-TDoA 9 mo – 3 y · TWR 2 mo – 2 y',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-20 °C … +45 °C (with battery)',
+      size: '68 × 50 × 18 mm · 38 g',
+      ip: 'IP66',
+      mounting: '2 screws',
+    },
+  },
+  {
+    id: 'lt3',
+    partNumber: 'LR-LT3A1',
+    image: '/images/hardware/lt3.png',
+    datasheet: datasheets.lt3,
+    specs: {
+      battery: 'Rechargeable LiPo 3.7 V, 1000 mAh (USB)',
+      batteryLife: 'UL-TDoA 12 mo – 5 y · TWR 3 mo – 3 y',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-20 °C … +45 °C (with battery)',
+      size: '75 × 95 × 15 mm · 72 g',
+      ip: '—',
+      mounting: 'Lanyard / clip-on / card holder',
+    },
+  },
+  {
+    id: 'lt4',
+    partNumber: 'LR-LT4A1',
+    image: '/images/hardware/lt4.png',
+    datasheet: datasheets.lt4,
+    specs: {
+      battery: 'Rechargeable LiPo 3.7 V, 600 mAh (USB)',
+      batteryLife: 'UL-TDoA 1 – 5 y · TWR 3 mo – 3 y',
+      accuracy: '< 0.5 m (TWR & TDoA)',
+      temp: '-20 °C … +45 °C (with battery)',
+      size: '43 × 48 × 22 mm · 38 g',
+      ip: 'IP66',
+      mounting: 'Universal NATO strap',
+    },
+  },
+]
+
+/** Milestones from leapslabs.com/about (dates are language-neutral) */
+export const milestoneDates = [
+  '04/2016', '01/2017', '01/2018', '03/2019', '10/2019',
+  '02/2020', '01/2021', '12/2022', '10/2023',
+]
+
+/** Case-study logos/links (text lives in i18n successStories) */
+export const successStoryMeta = [
+  { id: 'qorvo', link: 'https://www.qorvo.com' },
+  { id: 'toyota', link: null },
+  { id: 'amazon', link: null },
+  { id: 'nous', link: 'https://nousdigital.com/en/our-products/nous-sonic/' },
+  { id: 'umano', link: 'https://www.umanomedical.com' },
 ]

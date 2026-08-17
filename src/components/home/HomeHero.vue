@@ -2,9 +2,9 @@
   <section class="hhero">
     <div class="hhero__bg" aria-hidden="true">
       <svg class="hhero__rings" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="300" cy="300" r="120" stroke="rgba(0,160,223,0.35)" stroke-width="1.5" />
-        <circle cx="300" cy="300" r="200" stroke="rgba(0,160,223,0.22)" stroke-width="1.5" />
-        <circle cx="300" cy="300" r="280" stroke="rgba(0,160,223,0.12)" stroke-width="1.5" />
+        <circle cx="300" cy="300" r="120" stroke="rgba(217,71,90,0.4)" stroke-width="1.5" />
+        <circle cx="300" cy="300" r="200" stroke="rgba(217,71,90,0.25)" stroke-width="1.5" />
+        <circle cx="300" cy="300" r="280" stroke="rgba(217,71,90,0.14)" stroke-width="1.5" />
       </svg>
     </div>
 
@@ -14,10 +14,19 @@
           <span class="hhero__kicker">{{ slides[active].kicker }}</span>
           <h1 class="hhero__title">{{ slides[active].title }}</h1>
           <p class="hhero__subtitle">{{ slides[active].subtitle }}</p>
-          <RouterLink :to="slides[active].link" class="btn btn-primary">{{ slides[active].cta }}</RouterLink>
+          <div class="hhero__actions">
+            <RouterLink :to="slides[active].link" class="btn btn-primary">{{ slides[active].cta }}</RouterLink>
+            <RouterLink
+              v-if="slides[active].secondaryCta"
+              :to="slides[active].secondaryLink"
+              class="btn btn-light"
+            >
+              {{ slides[active].secondaryCta }}
+            </RouterLink>
+          </div>
         </div>
         <div class="hhero__visual">
-          <img :src="slideImages[active]" :class="{ 'recolor-blue': needsRecolor(slideImages[active]) }" alt="" loading="eager" />
+          <img :src="slideImages[active]" alt="" loading="eager" />
         </div>
       </div>
     </transition>
@@ -45,7 +54,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from '@/i18n'
-import { productImages, needsRecolor } from '@/data/images'
+import { productImages, hardwareImages } from '@/data/images'
 
 const { tm } = useI18n()
 
@@ -53,7 +62,7 @@ const slides = computed(() => tm('home.hero.slides') || [])
 const slideImages = [
   productImages.solutionsIsometric,
   productImages.udkKit,
-  productImages.rtlsStack,
+  hardwareImages.lt3,
 ]
 
 const INTERVAL = 8000
@@ -139,6 +148,12 @@ onUnmounted(() => { if (timer) clearInterval(timer) })
   color: rgba(255, 255, 255, 0.75);
   max-width: 480px;
   margin-bottom: 1.75rem;
+}
+
+.hhero__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .hhero__visual img {

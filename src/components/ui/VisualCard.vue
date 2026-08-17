@@ -6,7 +6,7 @@
     :class="{ 'visual-card--link': to }"
   >
     <div class="visual-card__media">
-      <img :src="image" :alt="imageAlt || title" :class="{ 'recolor-blue': needsRecolor(image) }" loading="lazy" />
+      <img :src="image" :alt="imageAlt || title" loading="lazy" />
     </div>
     <div class="visual-card__body">
       <span v-if="label" class="card__label">{{ label }}</span>
@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-import { needsRecolor } from '@/data/images'
 
 defineProps({
   image: { type: String, required: true },

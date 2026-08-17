@@ -12,13 +12,99 @@
     <!-- Qorvo-style sticky in-page subnav -->
     <nav class="solutions__subnav" aria-label="Page sections">
       <div class="container solutions__subnav-row">
-        <a href="#pillars">{{ tm('solutions.pillars')[0].label }}</a>
+        <a href="#applications">{{ t('solutions.appsLabel') }}</a>
         <a href="#use-cases">{{ t('solutions.useCasesLabel') }}</a>
+        <a href="#comparison">{{ t('solutions.rtlsComparison.label') }}</a>
+        <a href="#pillars">{{ tm('solutions.pillars')[0].label }}</a>
         <a href="#uniqueness">{{ t('solutions.uniqueLabel') }}</a>
         <a href="#stack">{{ t('solutions.stackLabel') }}</a>
         <a href="#technology">{{ t('solutions.techLabel') }}</a>
       </div>
     </nav>
+
+    <!-- Application examples from real deployments — details live on the Projects page -->
+    <section id="applications" class="section solutions__apps">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">{{ t('solutions.appsLabel') }}</span>
+          <h2 class="section-title">{{ t('solutions.appsTitle') }}</h2>
+          <p class="section-subtitle section-header__subtitle">{{ t('solutions.appsSubtitle') }}</p>
+        </div>
+        <div class="grid-3">
+          <RouterLink
+            v-for="(example, i) in tm('solutions.appExamples')"
+            :key="example.title"
+            :to="`/projects#uc-${appExampleSlugs[i]}`"
+            class="card solutions__app"
+          >
+            <span class="solutions__app-media">
+              <img :src="appExampleImages[i]" :alt="example.title" loading="lazy" />
+            </span>
+            <span class="solutions__app-body">
+              <h3>{{ example.title }}</h3>
+              <ul class="solutions__app-highlights">
+                <li v-for="(hl, j) in example.highlights" :key="j">{{ hl }}</li>
+              </ul>
+              <span class="solutions__app-more">
+                {{ t('common.readMore') }}
+                <span class="arrow-circle" aria-hidden="true">→</span>
+              </span>
+            </span>
+          </RouterLink>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases" class="section solutions__use-cases">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">{{ t('solutions.useCasesLabel') }}</span>
+          <h2 class="section-title">{{ t('solutions.useCasesTitle') }}</h2>
+          <p class="section-subtitle section-header__subtitle">{{ t('solutions.useCasesSubtitle') }}</p>
+        </div>
+        <ProductShowcase
+          :primary-image="productImages.rtlsUseCases"
+          primary-alt="Object tracking, indoor navigation, and geofencing with LEAPS RTLS"
+          variant="banner"
+        />
+      </div>
+    </section>
+
+    <!-- LEAPS RTLS vs PANS PRO RTLS vs PANS RTLS comparison table -->
+    <section id="comparison" class="section solutions__comparison">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">{{ t('solutions.rtlsComparison.label') }}</span>
+          <h2 class="section-title">{{ t('solutions.rtlsComparison.title') }}</h2>
+          <p class="section-subtitle section-header__subtitle">{{ t('solutions.rtlsComparison.subtitle') }}</p>
+        </div>
+        <div class="solutions__table-wrap">
+          <table class="solutions__table">
+            <thead>
+              <tr>
+                <th v-for="(col, i) in tm('solutions.rtlsComparison.columns')" :key="i" :class="{ 'solutions__table-leaps': i === 1 }">
+                  {{ col }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in tm('solutions.rtlsComparison.rows')" :key="row.label">
+                <th scope="row">{{ row.label }}</th>
+                <td v-for="(value, i) in row.values" :key="i" :class="{ 'solutions__table-leaps': i === 0 }">
+                  {{ value }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="solutions__table-notes">
+          <li v-for="(note, i) in tm('solutions.rtlsComparison.notes')" :key="i">{{ note }}</li>
+        </ul>
+        <a :href="externalLinks.comparison" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+          {{ t('solutions.rtlsComparison.source') }}
+        </a>
+      </div>
+    </section>
 
     <!-- Alternating callout rows (Qorvo interior-page idiom) -->
     <section id="pillars" class="section solutions__pillars">
@@ -37,24 +123,9 @@
             <a v-else :href="i === 1 ? '#uniqueness' : '#technology'" class="btn btn-outline">{{ pillar.linkText }}</a>
           </div>
           <div class="solutions__pillar-visual">
-            <img :src="pillarImages[i]" :alt="pillar.title" :class="{ 'recolor-blue': needsRecolor(pillarImages[i]) }" loading="lazy" />
+            <img :src="pillarImages[i]" :alt="pillar.title" loading="lazy" />
           </div>
         </article>
-      </div>
-    </section>
-
-    <section id="use-cases" class="section solutions__use-cases">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">{{ t('solutions.useCasesLabel') }}</span>
-          <h2 class="section-title">{{ t('solutions.useCasesTitle') }}</h2>
-          <p class="section-subtitle section-header__subtitle">{{ t('solutions.useCasesSubtitle') }}</p>
-        </div>
-        <ProductShowcase
-          :primary-image="productImages.rtlsUseCases"
-          primary-alt="Object tracking, indoor navigation, and geofencing with LEAPS RTLS"
-          variant="banner"
-        />
       </div>
     </section>
 
@@ -95,13 +166,18 @@
           <p class="solutions__tech-text">{{ t('solutions.techText') }}</p>
           <a :href="externalLinks.qorvoUwb" target="_blank" rel="noopener noreferrer" class="btn btn-outline">{{ t('solutions.techButton') }}</a>
         </div>
-        <ComparisonChart
-          :src="productImages.uwbComparison"
-          :alt="t('solutions.comparisonTitle')"
-          :title="t('solutions.comparisonTitle')"
-          :hint="t('solutions.comparisonHint')"
-          :enlarge-label="t('solutions.comparisonEnlarge')"
-        />
+        <div class="solutions__tech-chart">
+          <ComparisonChart
+            :src="productImages.uwbComparison"
+            :alt="t('solutions.comparisonTitle')"
+            :title="t('solutions.comparisonTitle')"
+            :hint="t('solutions.comparisonHint')"
+            :enlarge-label="t('solutions.comparisonEnlarge')"
+          />
+          <p class="solutions__tech-source">
+            <a :href="externalLinks.qorvoUwb" target="_blank" rel="noopener noreferrer">{{ t('solutions.comparisonSource') }}</a>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -116,7 +192,7 @@ import ProductShowcase from '@/components/ui/ProductShowcase.vue'
 import ComparisonChart from '@/components/ui/ComparisonChart.vue'
 import { useI18n } from '@/i18n'
 import { externalLinks } from '@/data/site'
-import { productImages, solutionPillarImages, needsRecolor } from '@/data/images'
+import { productImages, solutionPillarImages, appExampleImages, appExampleSlugs } from '@/data/images'
 
 const { t, tm } = useI18n()
 const { docsLink } = useDocs()
@@ -159,6 +235,158 @@ const pillarImages = solutionPillarImages
   color: var(--color-primary-dark);
 }
 
+/* Application examples — clickable cards leading to the Projects detail blocks */
+.solutions__apps {
+  background: white;
+}
+
+.solutions__app {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.solutions__app-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.solutions__app-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.solutions__app:hover .solutions__app-media img {
+  transform: scale(1.03);
+}
+
+.solutions__app-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.solutions__app h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.875rem;
+}
+
+.solutions__app-highlights {
+  display: grid;
+  gap: 0.5rem;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.solutions__app-highlights li {
+  position: relative;
+  padding-left: 1.375rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.solutions__app-highlights li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.solutions__app-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.solutions__use-cases {
+  background: var(--color-bg);
+}
+
+/* RTLS generations comparison table */
+.solutions__comparison {
+  background: white;
+}
+
+.solutions__table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.solutions__table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.solutions__table thead th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.875rem 1rem;
+  background: var(--color-ink);
+  color: white;
+  white-space: nowrap;
+}
+
+.solutions__table thead th.solutions__table-leaps {
+  background: var(--color-primary);
+}
+
+.solutions__table tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 0.625rem 1rem;
+  border-top: 1px solid var(--color-border-light);
+  background: var(--tint-brand-faint);
+  min-width: 200px;
+}
+
+.solutions__table tbody td {
+  padding: 0.625rem 1rem;
+  border-top: 1px solid var(--color-border-light);
+  color: var(--color-text-muted);
+  vertical-align: top;
+}
+
+.solutions__table tbody td.solutions__table-leaps {
+  color: var(--color-text);
+  font-weight: 500;
+  background: var(--tint-brand-soft);
+}
+
+.solutions__table-notes {
+  display: grid;
+  gap: 0.25rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.solutions__table-notes li {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
 /* Alternating callout rows */
 .solutions__pillars {
   background: var(--color-bg);
@@ -199,10 +427,6 @@ const pillarImages = solutionPillarImages
 .solutions__pillar--flip .solutions__pillar-visual img {
   -webkit-mask-image: linear-gradient(90deg, black 65%, transparent 100%);
   mask-image: linear-gradient(90deg, black 65%, transparent 100%);
-}
-
-.solutions__use-cases {
-  background: white;
 }
 
 /* Airy borderless feature grid */
@@ -268,10 +492,13 @@ const pillarImages = solutionPillarImages
 
 .solutions__stack-image {
   width: 100%;
+  max-height: 520px;
+  object-fit: contain;
   border-radius: var(--radius-lg);
   background: white;
   border: 1px solid var(--color-border-light);
   box-shadow: var(--shadow-md);
+  padding: 1rem;
 }
 
 .solutions__technology {
@@ -287,6 +514,22 @@ const pillarImages = solutionPillarImages
   color: var(--color-text-muted);
   line-height: 1.75;
   margin: 1.25rem 0 1.75rem;
+}
+
+/* Keep the Qorvo technology chart compact within the layout */
+.solutions__tech-chart {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.solutions__tech-source {
+  margin-top: 0.875rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
+.solutions__tech-source a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 900px) {

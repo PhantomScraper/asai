@@ -71,6 +71,12 @@ export default defineNuxtConfig({
     // Only used by the optional `npm run translate` (Claude) script.
     anthropicApiKey: process.env.ANTHROPIC_API_KEY || "",
   },
+  routeRules: {
+    // Legacy URLs from before the Products/Services merge and the /projects rename.
+    "/our-products": { redirect: { to: "/products-services", statusCode: 301 } },
+    "/our-services": { redirect: { to: "/products-services", statusCode: 301 } },
+    "/our-projects": { redirect: { to: "/projects", statusCode: 301 } },
+  },
   nitro: {
     serverAssets: [{ baseName: "docs", dir: docsDir }],
     prerender: {

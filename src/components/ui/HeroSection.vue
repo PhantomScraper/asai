@@ -39,7 +39,6 @@
             :src="imageSrc"
             :alt="imageAlt"
             class="hero__image"
-            :class="{ 'recolor-blue': needsRecolor(imageSrc) }"
             loading="eager"
           />
         </div>
@@ -61,7 +60,6 @@
 
 <script setup>
 import ProductShowcase from '@/components/ui/ProductShowcase.vue'
-import { needsRecolor } from '@/data/images'
 
 defineProps({
   title: { type: String, required: true },
@@ -93,7 +91,7 @@ defineProps({
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, #000 0%, #031e3e 55%, #0b3d6b 120%);
+  background: linear-gradient(120deg, #000 0%, #2a0a10 55%, #6b0b1e 120%);
 }
 
 .hero__mesh {
@@ -103,8 +101,8 @@ defineProps({
   width: 70%;
   height: 80%;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(0, 160, 223, 0.12) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 T100 50' fill='none' stroke='%2300a0df' stroke-width='0.3' opacity='0.3'/%3E%3C/svg%3E");
+    radial-gradient(circle at 20% 50%, rgba(190, 29, 47, 0.12) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 T100 50' fill='none' stroke='%23be1d2f' stroke-width='0.3' opacity='0.3'/%3E%3C/svg%3E");
   background-size: 80px 80px;
   mask-image: linear-gradient(to left, black 30%, transparent 100%);
   opacity: 0.8;
@@ -113,7 +111,7 @@ defineProps({
 .hero__orb {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 160, 223, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(190, 29, 47, 0.22) 0%, transparent 70%);
 }
 
 .hero__orb--1 { width: 280px; height: 280px; top: 15%; right: 20%; animation: float 8s ease-in-out infinite; }
@@ -210,17 +208,8 @@ defineProps({
   filter: drop-shadow(0 20px 40px rgba(15, 20, 25, 0.12));
 }
 
-/* Scoped filter rules outrank the global .recolor-blue — recompose them here */
-.hero__image.recolor-blue {
-  filter: drop-shadow(0 20px 40px rgba(15, 20, 25, 0.12)) hue-rotate(197deg) saturate(1.05);
-}
-
 .hero__image-wrap--framed .hero__image {
   filter: none;
-}
-
-.hero__image-wrap--framed .hero__image.recolor-blue {
-  filter: hue-rotate(197deg) saturate(1.05);
 }
 
 .hero__illustration {

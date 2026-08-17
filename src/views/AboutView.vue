@@ -9,18 +9,19 @@
       :show-visual="true"
     />
 
-    <section class="section about__stats">
+    <!-- Vision (from the LEAPS company presentation) -->
+    <section class="section about__vision">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">{{ t('about.milestonesLabel') }}</span>
-          <h2 class="section-title">{{ t('about.milestonesTitle') }}</h2>
+          <span class="section-label">{{ t('about.visionLabel') }}</span>
+          <h2 class="section-title">{{ t('about.visionTitle') }}</h2>
         </div>
-        <div class="grid-3 about__stats-grid">
-          <div v-for="item in tm('about.milestones')" :key="item.year" class="about__stat">
-            <span class="about__stat-year">{{ item.year }}</span>
-            <p class="about__stat-text">{{ item.text }}</p>
-          </div>
-        </div>
+        <ol class="about__vision-list">
+          <li v-for="(point, i) in tm('about.visionPoints')" :key="i">
+            <span class="about__vision-dot" aria-hidden="true"></span>
+            <p>{{ point }}</p>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -28,13 +29,38 @@
       <div class="container">
         <div class="about__values-grid">
           <article v-for="value in tm('about.values')" :key="value.title" class="card about__value-card">
-            <img :src="value.icon" :alt="value.title" class="about__value-icon recolor-blue" loading="lazy" />
+            <img :src="value.icon" :alt="value.title" class="about__value-icon" loading="lazy" />
             <div class="about__value-body">
               <h3>{{ value.title }}</h3>
               <p>{{ value.description }}</p>
             </div>
           </article>
         </div>
+        <p class="about__team-note">{{ t('about.teamNote') }}</p>
+      </div>
+    </section>
+
+    <!-- Milestones timeline, following leapslabs.com/about -->
+    <section class="section about__milestones">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">{{ t('about.milestonesLabel') }}</span>
+          <h2 class="section-title">{{ t('about.milestonesTitle') }}</h2>
+        </div>
+        <ol class="about__timeline">
+          <li
+            v-for="(item, i) in milestonesNewestFirst"
+            :key="item.date"
+            class="about__timeline-item"
+            :class="{ 'about__timeline-item--right': i % 2 === 1 }"
+          >
+            <span class="about__timeline-marker" aria-hidden="true"></span>
+            <div class="about__timeline-card card">
+              <span class="about__timeline-date">{{ item.date }}</span>
+              <p>{{ item.text }}</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -99,7 +125,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import HeroSection from '@/components/ui/HeroSection.vue'
 import { useI18n } from '@/i18n'
 import { team, contact } from '@/data/site'
@@ -109,6 +135,9 @@ const { t, tm } = useI18n()
 const form = reactive({ name: '', company: '', email: '', message: '' })
 const submitted = ref(false)
 
+// Newest first, like the official leapslabs.com timeline
+const milestonesNewestFirst = computed(() => [...(tm('about.milestones') || [])].reverse())
+
 const handleSubmit = () => {
   submitted.value = true
   Object.assign(form, { name: '', company: '', email: '', message: '' })
@@ -117,36 +146,39 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
-/* Milestone stat strip — Qorvo-style left-rule figures */
-.about__stats {
+/* Vision — numbered brand-dot list */
+.about__vision {
   background: white;
-  padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-.about__stats-grid {
-  max-width: 960px;
+.about__vision-list {
+  max-width: 760px;
   margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
 }
 
-.about__stat {
-  border-left: 3px solid var(--color-primary);
-  padding-left: 1.25rem;
+.about__vision-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-.about__stat-year {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--color-primary-dark);
-  margin-bottom: 0.5rem;
+.about__vision-dot {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  margin-top: 0.25rem;
 }
 
-.about__stat-text {
-  font-size: 0.9375rem;
+.about__vision-list p {
+  font-size: 1rem;
   color: var(--color-text-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* Values — horizontal icon cards */
@@ -188,9 +220,93 @@ const handleSubmit = () => {
   line-height: 1.7;
 }
 
+.about__team-note {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+/* Milestones — central-rail alternating timeline (like leapslabs.com/about) */
+.about__milestones {
+  background: white;
+}
+
+.about__timeline {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.about__timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  opacity: 0.65;
+}
+
+.about__timeline-item {
+  position: relative;
+  width: calc(50% - 2rem);
+}
+
+.about__timeline-item--right {
+  margin-left: auto;
+}
+
+.about__timeline-marker {
+  position: absolute;
+  top: 1.5rem;
+  right: -2rem;
+  transform: translateX(50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--color-primary);
+  z-index: 1;
+}
+
+.about__timeline-item--right .about__timeline-marker {
+  right: auto;
+  left: -2rem;
+  transform: translateX(-50%);
+}
+
+.about__timeline-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.about__timeline-date {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.375rem;
+}
+
+.about__timeline-card p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
 /* Team — airy borderless photo cards */
 .about__team {
-  background: white;
+  background: var(--color-bg);
 }
 
 .about__team-grid {
@@ -233,9 +349,9 @@ const handleSubmit = () => {
   padding: 0.375rem 0.875rem;
 }
 
-/* Contact — light form beside navy info card */
+/* Contact — light form beside brand-ink info card */
 .about__contact {
-  background: var(--color-bg);
+  background: white;
 }
 
 .about__contact-grid {
@@ -282,7 +398,7 @@ const handleSubmit = () => {
 }
 
 .about__contact-info {
-  background: var(--color-navy);
+  background: var(--color-ink);
   border-radius: var(--radius-sm);
   color: white;
   padding: clamp(1.5rem, 3vw, 2rem);
@@ -331,6 +447,24 @@ const handleSubmit = () => {
 
   .about__form-row {
     grid-template-columns: 1fr;
+  }
+
+  .about__timeline::before {
+    left: 0.5rem;
+    transform: none;
+  }
+
+  .about__timeline-item,
+  .about__timeline-item--right {
+    width: auto;
+    margin-left: 2.25rem;
+  }
+
+  .about__timeline-marker,
+  .about__timeline-item--right .about__timeline-marker {
+    left: -2.25rem;
+    right: auto;
+    transform: translateX(calc(-50% + 0.5rem + 1.5px));
   }
 }
 

@@ -1,26 +1,26 @@
 <template>
   <div class="home">
     <HomeHero />
-    <SolutionChips />
-    <ProductCallout />
-    <ResourceCards />
-    <DesignHubBand />
-    <TechBanner />
-    <SuccessStories />
+    <HighlightsBand />
+    <ValueBullets />
     <InstitutionalBand />
+    <HelpColumns />
+    <UdkCallout />
+    <SuccessStories />
+    <DocsBand />
     <LogoStrip />
   </div>
 </template>
 
 <script setup>
 import HomeHero from '@/components/home/HomeHero.vue'
-import SolutionChips from '@/components/home/SolutionChips.vue'
-import ProductCallout from '@/components/home/ProductCallout.vue'
-import ResourceCards from '@/components/home/ResourceCards.vue'
-import DesignHubBand from '@/components/home/DesignHubBand.vue'
-import TechBanner from '@/components/home/TechBanner.vue'
-import SuccessStories from '@/components/home/SuccessStories.vue'
+import HighlightsBand from '@/components/home/HighlightsBand.vue'
+import ValueBullets from '@/components/home/ValueBullets.vue'
 import InstitutionalBand from '@/components/home/InstitutionalBand.vue'
+import HelpColumns from '@/components/home/HelpColumns.vue'
+import UdkCallout from '@/components/home/UdkCallout.vue'
+import SuccessStories from '@/components/home/SuccessStories.vue'
+import DocsBand from '@/components/home/DocsBand.vue'
 import LogoStrip from '@/components/home/LogoStrip.vue'
 </script>
 

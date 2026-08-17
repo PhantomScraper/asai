@@ -44,7 +44,7 @@ const { t } = useI18n()
 
 <style scoped>
 .cta-banner { padding: clamp(2.5rem, 6vw, 4rem) 0; }
-.cta-banner__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.75rem, 4vw, 3rem); background: var(--gradient-blue); border-radius: var(--radius-md); box-shadow: var(--shadow-glow); }
+.cta-banner__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; padding: clamp(1.75rem, 4vw, 3rem); background: var(--gradient-brand); border-radius: var(--radius-md); box-shadow: var(--shadow-glow); }
 .cta-banner__text h2 { font-family: var(--font-display); font-size: clamp(1.375rem, 3vw, 1.75rem); font-weight: 500; color: white; margin-bottom: 0.5rem; }
 .cta-banner__text p { color: rgba(255, 255, 255, 0.85); max-width: 480px; line-height: 1.6; }
 .cta-banner__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }

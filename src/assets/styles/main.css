@@ -1,10 +1,11 @@
 :root {
-  --color-primary: #00a0df;
-  --color-primary-dark: #0b5d9d;
-  --color-primary-light: #33b5e8;
-  --color-link: #0b5d9d;
-  --color-accent: #0b5d9d;
-  --color-navy: #031e3e;
+  /* LEAPS brand red — sampled from leapslabs.com (rgb(190, 29, 47)) */
+  --color-primary: #be1d2f;
+  --color-primary-dark: #8f1523;
+  --color-primary-light: #d9475a;
+  --color-link: #8f1523;
+  --color-accent: #8f1523;
+  --color-ink: #2a0a10;
   --color-gray-dark: #2e2e2e;
   --color-gray-mid: #565656;
   --color-text: #1e1e1e;
@@ -16,13 +17,13 @@
   --color-border: #e0e0e0;
   --color-border-light: #ededed;
 
-  --gradient-blue: linear-gradient(242deg, #00a0df 0%, #0b5d9d 100%);
+  --gradient-brand: linear-gradient(242deg, #d9475a 0%, #8f1523 100%);
   --gradient-gray: linear-gradient(90deg, #565656 10%, #2e2e2e 100%);
-  --gradient-navy: linear-gradient(90deg, #031e3e 0%, rgba(6, 37, 75, 0.91) 35%, rgba(14, 60, 115, 0.65) 70%, rgba(12, 81, 165, 0.01) 100%);
+  --gradient-ink: linear-gradient(90deg, #2a0a10 0%, rgba(62, 12, 22, 0.91) 35%, rgba(107, 24, 38, 0.65) 70%, rgba(166, 30, 48, 0.01) 100%);
   --gradient-hero: linear-gradient(90deg, #000 0%, rgba(64, 64, 64, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
-  --tint-blue: rgba(0, 160, 223, 0.2);
-  --tint-blue-soft: rgba(0, 160, 223, 0.08);
-  --tint-blue-faint: rgba(0, 160, 223, 0.04);
+  --tint-brand: rgba(190, 29, 47, 0.14);
+  --tint-brand-soft: rgba(190, 29, 47, 0.07);
+  --tint-brand-faint: rgba(190, 29, 47, 0.04);
 
   --font-display: 'Nunito', system-ui, sans-serif;
   --font-body: 'Roboto', system-ui, sans-serif;
@@ -38,7 +39,7 @@
   --shadow-sm: 0 1px 3px rgba(30, 30, 30, 0.06);
   --shadow-md: 0 4px 20px rgba(30, 30, 30, 0.08);
   --shadow-lg: 0 12px 40px rgba(30, 30, 30, 0.12);
-  --shadow-glow: 0 0 60px rgba(0, 160, 223, 0.15);
+  --shadow-glow: 0 0 60px rgba(190, 29, 47, 0.15);
 
   --header-height: 72px;
   --container-max: 1200px;
@@ -100,6 +101,11 @@ ul {
 
 .section {
   padding: clamp(3rem, 7vw, var(--section-padding)) 0;
+}
+
+/* Anchor jumps land below the fixed header (and sticky subnavs) */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 3.5rem);
 }
 
 .section-label {
@@ -174,7 +180,7 @@ ul {
 }
 
 .btn-outline {
-  background: var(--tint-blue-faint);
+  background: var(--tint-brand-faint);
   color: var(--color-primary-dark);
   border: 1px solid var(--color-primary);
 }
@@ -266,18 +272,6 @@ a:hover .arrow-circle,
 .chip:hover {
   border-color: var(--color-primary);
   color: var(--color-primary-dark);
-}
-
-/* Shift red-accented brand illustrations to the Qorvo blue tone.
-   Whites/grays are unaffected; only the red accents rotate to blue. */
-.recolor-blue {
-  filter: hue-rotate(197deg) saturate(1.05);
-}
-
-/* Multicolored illustrations (mixed red/orange/green accents) get a uniform
-   blue duotone instead — hue-rotate alone would leave stray pinks/oranges. */
-.recolor-mono-blue {
-  filter: grayscale(1) sepia(1) saturate(2.4) hue-rotate(175deg) brightness(1.04);
 }
 
 /* Qorvo-style uppercase card label */
@@ -439,7 +433,7 @@ a:hover .arrow-circle,
 .mobile-menu-link:hover,
 .mobile-menu-link--active {
   color: var(--color-primary-dark);
-  background: var(--tint-blue-soft);
+  background: var(--tint-brand-soft);
 }
 
 .mobile-menu-lang {

@@ -23,8 +23,8 @@
         </div>
         <div class="footer__links">
           <h4>{{ t('footer.resources') }}</h4>
-          <NuxtLink :to="docsLink()">{{ t('footer.documentation') }}</NuxtLink>
-          <NuxtLink :to="docsLink('faq')">{{ t('footer.faq') }}</NuxtLink>
+          <a :href="externalLinks.docs" target="_blank" rel="noopener noreferrer">{{ t('footer.documentation') }}</a>
+          <a :href="`${externalLinks.docs}faq/`" target="_blank" rel="noopener noreferrer">{{ t('footer.faq') }}</a>
           <a :href="externalLinks.forum" target="_blank" rel="noopener noreferrer">{{ t('footer.forum') }}</a>
           <a :href="externalLinks.store" target="_blank" rel="noopener noreferrer">{{ t('footer.store') }}</a>
         </div>
@@ -53,7 +53,6 @@ import SocialIcon from '@/components/ui/SocialIcon.vue'
 import NewsletterBanner from '@/components/ui/NewsletterBanner.vue'
 
 const { t, navLinks } = useI18n()
-const { docsLink } = useDocs()
 </script>
 
 <style scoped>

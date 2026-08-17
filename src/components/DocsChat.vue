@@ -153,7 +153,7 @@ async function send() {
   gap: 0.5rem;
   padding: 0.75rem 1.1rem;
   border-radius: 999px;
-  background: var(--gradient-blue, #00a0df);
+  background: var(--gradient-brand, #be1d2f);
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
@@ -179,7 +179,7 @@ async function send() {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1rem;
-  background: var(--gradient-blue, #00a0df);
+  background: var(--gradient-brand, #be1d2f);
   color: #fff;
 }
 .dchat__close {
@@ -214,7 +214,7 @@ async function send() {
   white-space: pre-wrap;
 }
 .dchat__msg--user .dchat__bubble {
-  background: var(--color-primary, #00a0df);
+  background: var(--color-primary, #be1d2f);
   color: #fff;
 }
 .dchat__msg--assistant .dchat__bubble {
@@ -232,7 +232,7 @@ async function send() {
   margin: 0.2rem 0;
 }
 .dchat__sources a {
-  color: var(--color-link, #0b5d9d);
+  color: var(--color-link, #8f1523);
 }
 .dchat__error {
   color: #b00020;

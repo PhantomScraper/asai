@@ -4,7 +4,8 @@
       :title="t('support.heroTitle')"
       :subtitle="t('support.heroSubtitle')"
       :cta-text="t('support.ctaDocs')"
-      :cta-link="docsLink()"
+      :cta-link="externalLinks.docs"
+      :cta-external="true"
       :show-visual="false"
     />
     <section class="section support__resources">
@@ -50,6 +51,13 @@
             <span aria-hidden="true">{{ t('common.arrow') }}</span>
           </a>
         </div>
+        <div class="support__ask">
+          <button type="button" class="btn btn-primary support__ask-btn" @click="openChat">
+            <span aria-hidden="true">✦</span>
+            {{ t('support.askDocs') }}
+          </button>
+          <p class="support__ask-hint">{{ t('support.askDocsHint') }}</p>
+        </div>
       </div>
     </section>
     <section class="section support__mailing">
@@ -87,13 +95,16 @@ import { useI18n } from '@/i18n'
 import { externalLinks } from '@/data/site'
 
 const { t, tm } = useI18n()
-const { docsLink } = useDocs()
-const resourceLinks = computed(() => [docsLink(), docsLink('udk-start'), externalLinks.forum])
+// Documentation lives at docs.leapslabs.com — link out rather than to the local mirror.
+const resourceLinks = computed(() => [externalLinks.docs, externalLinks.udkStart, externalLinks.forum])
 const docSectionLinks = computed(() =>
-  ['leaps-solutions', 'udk', 'leaps-rtls', 'pans-pro-rtls', 'hardware', 'faq', 'support'].map((s) =>
-    docsLink(s)
+  ['leaps-solutions', 'udk', 'leaps-rtls', 'pans-pro-rtls', 'hardware', 'faq', 'support'].map(
+    (s) => `${externalLinks.docs}${s}/`
   )
 )
+
+const chatOpen = useState('leaps-chat-open', () => false)
+const openChat = () => { chatOpen.value = true }
 
 const showSubscribe = ref(false)
 const email = ref('')
@@ -124,7 +135,7 @@ const handleSubscribe = () => {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--tint-blue-soft);
+  background: var(--tint-brand-soft);
   color: var(--color-primary-dark);
   margin-bottom: 1rem;
 }
@@ -151,7 +162,7 @@ const handleSubscribe = () => {
 
 /* Qorvo signature: tinted band with a large asymmetric corner, chip links */
 .support__docs {
-  background: var(--tint-blue);
+  background: var(--tint-brand);
   border-radius: 0 0 var(--radius-corner-lg) 0;
 }
 
@@ -160,6 +171,22 @@ const handleSubscribe = () => {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
+}
+
+/* Prominent Ask-the-docs entry right below the docs links */
+.support__ask {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.support__ask-btn span {
+  font-size: 0.8125rem;
+}
+
+.support__ask-hint {
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
 }
 
 /* Mailing list: compact blue banner */
@@ -209,7 +236,7 @@ const handleSubscribe = () => {
 }
 
 .support__mailing-btn:hover {
-  background: var(--color-navy);
+  background: var(--color-ink);
   color: white;
 }
 
