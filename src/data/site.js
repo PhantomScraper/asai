@@ -11,6 +11,7 @@ export const externalLinks = {
   forum: 'https://forum.leapslabs.com/',
   store: 'https://store.leapslabs.com/',
   udkStart: 'https://docs.leapslabs.com/udk-start',
+  privacy: 'https://www.leapslabs.com/privacy-policy',
   qorvoUwb: 'https://www.qorvo.com/innovation/ultra-wideband/technology',
   comparison: 'https://docs.leapslabs.com/leaps-solutions/comparison/',
 }
@@ -102,39 +103,18 @@ export const kitIncludes = [
 
 export const partNumber = 'QM33120WDK2 = UDK'
 
-/** UDK (QM33120WDK2) authorized distributors — list and links confirmed by LEAPS
- *  in the agency review (no Richardson Electronics: currently not available). */
+/** UDK (QM33120WDK2) distributors — mirrors leapslabs.com/products (TDK review, Oct 2026). */
 export const distributors = [
-  {
-    name: 'DigiKey',
-    url: 'https://www.digikey.com/en/products/detail/qorvo/QM33120WDK2/26905169',
-    logo: '/images/distributors/82b2eb4d48d54a16b8f7163841763bc6.png',
-  },
-  {
-    name: 'Mouser',
-    url: 'https://eu.mouser.com/ProductDetail/Qorvo/QM33120WDK2',
-    logo: '/images/distributors/a40f58c14bf742908df1fd53a25aeb57.png',
-  },
-  {
-    name: 'Avnet',
-    url: 'https://www.avnet.com/americas/product/qorvo/qm33120wdk2/evolve-121598055/',
-    logo: '/images/distributors/ed819279764b45768bd671a2cd68fe11.png',
-  },
-  {
-    name: 'RFMW',
-    url: 'https://www.rfmw.com/products/detail/qm33120wdk2-qorvo/859631/',
-    logo: '/images/distributors/e67076c605bd4115ac42ca2baa91d17b.png',
-  },
-  {
-    name: 'Symmetry Electronics',
-    url: 'https://www.symmetryelectronics.com/products/qorvo/qm33120wdk2/',
-    logo: '/images/distributors/5656c95bc2af415e8ca118aa4ac588c0.png',
-  },
-  {
-    name: 'Qorvo',
-    url: 'https://www.qorvo.com/products/p/QM33120WDK2',
-    logo: '/images/distributors/e167dac274d54df2afcd9a245e915bbc.png',
-  },
+  { name: 'DigiKey', url: 'https://www.digikey.com/en/products/detail/qorvo/QM33120WDK2/26905169', logo: '/images/distributors/82b2eb4d48d54a16b8f7163841763bc6.png' },
+  { name: 'CrowdSupply', url: 'https://www.crowdsupply.com/qorvo/qm33120wdk2-uwb-dev-kit', logo: '/images/distributors/922068330975499aa31c89268bba5b7e.png' },
+  { name: 'Mouser', url: 'https://eu.mouser.com/ProductDetail/Qorvo/QM33120WDK2', logo: '/images/distributors/a40f58c14bf742908df1fd53a25aeb57.png' },
+  { name: 'Richardson Electronics', url: 'https://www.rellpower.com/store/qm33120wdk2.html', logo: '/images/distributors/f161585b1ca844759144f8476907304e.png' },
+  { name: 'Avnet', url: 'https://www.avnet.com/americas/product/qorvo/qm33120wdk2/evolve-121598055/', logo: '/images/distributors/ed819279764b45768bd671a2cd68fe11.png' },
+  { name: 'NAC', url: 'https://store.nacsemi.com/Products/Detail?part=QM33120WDK2&stock=XSKDRABS0121847&Mfr=QORVO&auth=n&instock=y', logo: '/images/distributors/b4227ceffb2c483186396c40b87fdc12.png' },
+  { name: 'RFMW', url: 'https://www.rfmw.com/products/detail/qm33120wdk2-qorvo/859631/', logo: '/images/distributors/e67076c605bd4115ac42ca2baa91d17b.png' },
+  { name: 'Qorvo', url: 'https://www.qorvo.com/products/p/QM33120WDK2', logo: '/images/distributors/e167dac274d54df2afcd9a245e915bbc.png' },
+  // Direct order from LEAPS
+  { name: 'LEAPS Store', url: externalLinks.store, logo: '/logo.png' },
 ]
 
 export const serviceCategories = [
@@ -342,12 +322,12 @@ export const verifiedFacts = [
   { label: 'Founded', value: '2016' },
   { label: 'Headquarters', value: 'Prague, Czech Republic' },
   { label: 'Known for', value: 'DWM1001, DWM3001, PANS RTLS' },
-  { label: 'Experience', value: '10+ years in UWB RTLS' },
+  { label: 'Experience', value: '12+ years in UWB RTLS' },
 ]
 
 export const contact = {
   company: 'LEAPS s.r.o.',
-  addressLines: ['Hodoninska 1', '141 00', 'Prague 4', 'Czech Republic, EU'],
+  addressLines: ['Hodoninska 1', '141 00, Prague 4', 'Czech Republic, EU'],
   phone: '+420 222 966 953',
   email: 'info@leapslabs.com',
   vat: 'CZ04768655',

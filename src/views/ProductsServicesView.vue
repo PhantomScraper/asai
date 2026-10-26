@@ -505,6 +505,13 @@ const { docsLink } = useDocs()
   margin-bottom: 0.75rem;
 }
 
+.ps__distributors .ps__subheading {
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
 .ps__bullets {
   display: grid;
   gap: 0.625rem;

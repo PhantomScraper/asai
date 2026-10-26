@@ -42,10 +42,10 @@
         :aria-selected="i === active"
         @click="select(i)"
       >
-        {{ slide.kicker }}
         <span class="hhero__tab-track">
           <span v-if="i === active" :key="`bar-${active}-${cycle}`" class="hhero__tab-bar"></span>
         </span>
+        {{ slide.kicker }}
       </button>
     </div>
   </section>
@@ -202,25 +202,28 @@ onUnmounted(() => { if (timer) clearInterval(timer) })
   color: white;
 }
 
+/* Bar above the label, growing from the centre — deliberately unlike qorvo.com's left-to-right underline (TDK review). */
 .hhero__tab-track {
   display: block;
-  height: 2px;
-  margin-top: 0.5rem;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 1px;
+  height: 3px;
+  margin-bottom: 0.625rem;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
   overflow: hidden;
 }
 
 .hhero__tab-bar {
   display: block;
   height: 100%;
-  background: var(--color-primary);
+  background: var(--gradient-brand);
+  border-radius: inherit;
+  transform-origin: 50% 50%;
   animation: hhero-progress 8s linear forwards;
 }
 
 @keyframes hhero-progress {
-  from { width: 0; }
-  to { width: 100%; }
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .hhero-fade-enter-active,

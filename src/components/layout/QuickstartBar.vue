@@ -37,44 +37,54 @@ const isDocs = computed(() => route.path.startsWith('/docs'))
 </script>
 
 <style scoped>
+/* Dark tab docked to the bottom edge — deliberately unlike the floating white pill on qorvo.com. */
 .qbar {
   position: fixed;
-  bottom: 1rem;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 900;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding: 0.625rem 1.5rem;
-  background: white;
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-lg);
+  gap: 1.75rem;
+  padding: 0.5rem 1.75rem 0.5rem 0.5rem;
+  background: var(--color-ink);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
   white-space: nowrap;
 }
 
 .qbar__lead {
   display: flex;
   flex-direction: column;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  transition: filter var(--transition);
+}
+
+.qbar__lead:hover {
+  filter: brightness(1.12);
 }
 
 .qbar__lead-title {
   font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: white;
 }
 
 .qbar__lead-sub {
   font-size: 0.6875rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .qbar__sep {
   width: 1px;
   height: 28px;
-  background: var(--color-border);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .qbar__item {
@@ -84,18 +94,18 @@ const isDocs = computed(() => route.path.startsWith('/docs'))
   font-family: var(--font-display);
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--color-text);
+  color: rgba(226, 232, 240, 0.85);
   transition: color var(--transition);
 }
 
 .qbar__item:hover {
-  color: var(--color-primary-dark);
+  color: white;
 }
 
 .qbar__item svg {
   width: 18px;
   height: 18px;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-light);
 }
 
 @media (max-width: 767px) {

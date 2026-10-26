@@ -48,7 +48,7 @@ export default {
     forum: 'フォーラム',
     store: 'ストア',
     contact: 'お問い合わせ',
-    copyright: 'Copyright © 2019–2026 by LEAPS',
+    copyright: 'Copyright © {year} by LEAPS',
     privacy: 'プライバシーポリシー',
     description: 'LEAPSはUltra-Widebandに基づくリアルタイム位置測位・テレメトリシステムを開発しています — 倉庫、病院、工場などに正確な測位とデータテレメトリを提供します。',
     stayConnected: 'つながりを保つ',
@@ -57,9 +57,8 @@ export default {
   },
   cta: {
     title: 'お困りですか？',
-    description: 'FAQをご確認いただくか、メッセージをお送りください。すぐに折り返しご連絡いたします。',
-    faq: 'FAQ',
-    faqDocs: 'docs.leapslabs.com のFAQ',
+    description: 'ドキュメントをご確認いただくか、メッセージをお送りください。すぐに折り返しご連絡いたします。',
+    docs: 'オンラインドキュメント',
   },
   quickstart: {
     quickstart: 'クイックスタート',
@@ -103,7 +102,7 @@ export default {
     },
     highlights: [
       { title: '堅牢な精度', text: '過酷な環境でもセンチメートルレベルの優れた測位精度。' },
-      { title: '確かな実績', text: 'Fortune 500企業へのソリューション提供実績10年以上。' },
+      { title: '確かな実績', text: 'Fortune 500企業へのソリューション提供実績12年以上。' },
       { title: '独自性', text: 'サービス統合にも製品開発にも、汎用的で使いやすい。' },
       { title: '100%自社開発', text: 'すべての製品は自社エンジニアが開発・検証しています。' },
     ],
@@ -128,8 +127,8 @@ export default {
         { title: 'テクノロジーの先へ', text: '私たちの専門知識とパートナーシップが、すべてのプロジェクトにおけるイノベーションと信頼性を保証します。' },
       ],
       stats: [
-        { value: '2016', label: 'プラハ（EU）で設立' },
-        { value: '10+', label: 'UWBの経験年数' },
+        { value: '12+', label: 'UWB RTLSの経験年数' },
+        { value: '300万+', label: '当社が設計、または当社技術を搭載したUWBデバイス' },
         { value: 'Fortune 500', label: '世界中の顧客' },
         { value: '100%', label: '自社開発' },
       ],
@@ -548,26 +547,15 @@ export default {
   },
   support: {
     heroTitle: 'サポート',
-    heroSubtitle: 'LEAPS RTLS、PANS PRO RTLS、UDKデモキットのドキュメント、クイックスタートガイド、コミュニティリソース。',
+    heroSubtitle: 'オールインワンUWBデモキット（UDK）、LEAPS RTLS、PANS PRO RTLSのドキュメント、クイックスタートガイド、コミュニティリソース。',
     ctaDocs: 'ドキュメントを見る',
-    docsSectionsLabel: 'ドキュメントセクション',
     docsSectionsTitle: 'LEAPS公式ドキュメントを閲覧',
-    docsSectionsSubtitle: 'すべてのコンポーネントの包括的な説明 — docs.leapslabs.com のセクションごとに整理されています。',
     askDocs: 'ドキュメントに質問',
     askDocsHint: 'お探しの情報が見つかりませんか？AIアシスタントにお尋ねください — LEAPS公式ドキュメントに基づいて直接回答します。',
-    mailingTitle: 'ドキュメントメーリングリスト',
-    mailingText: 'ドキュメントが公開され次第お知らせするため、メーリングリストにご登録ください。',
-    mailingButton: '登録する',
-    modalTitle: '更新通知に登録',
-    modalText: 'ドキュメントが公開されたら通知を受け取れます。',
-    emailPlaceholder: 'メールアドレス',
     resources: [
       { title: 'ドキュメント', description: 'UDK DEMO KIT、LEAPS RTLS、PANS PRO RTLSの各コンポーネントに関する包括的な説明。', linkText: 'ドキュメントを読む' },
       { title: 'クイックスタートガイド', description: 'UDKクイックスタートガイドに従って、Ultra-WidebandおよびRTLS技術の実践的な評価を始めましょう。', linkText: 'UDKクイックスタート' },
       { title: 'コミュニティフォーラム', description: 'ディスカッションに参加し、質問を投げかけ、世界中のLEAPSの顧客・ユーザーコミュニティとつながりましょう。', linkText: 'フォーラムを見る' },
-    ],
-    docSections: [
-      'LEAPSソリューション', 'UDKデモキット', 'LEAPS RTLS', 'PANS PRO RTLS', 'ハードウェア', 'FAQ', 'サポート',
     ],
   },
   about: {
@@ -589,7 +577,7 @@ export default {
       },
       {
         title: '経験',
-        description: 'LEAPSチームは、さまざまな技術（2.4GHz ToF、2.4GHz位相測定、センサーフュージョン、Ultra-Wideband）を用いたリアルタイム位置情報システムの開発において、10年以上にわたって培った経験を有しています。2014年以降、チームはUltra-Wideband技術に完全に注力しています。',
+        description: 'LEAPSチームは、さまざまな技術（2.4GHz ToF、2.4GHz位相測定、センサーフュージョン、Ultra-Wideband）を用いたリアルタイム位置情報システムの開発において、12年以上にわたって培った経験を有しています。2014年以降、チームはUltra-Wideband技術に完全に注力しています。',
         icon: '/images/about/experience.png',
       },
     ],

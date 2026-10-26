@@ -116,7 +116,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n, supportedLocales as locales } from '@/i18n'
 import { externalLinks } from '@/data/site'
 
@@ -134,7 +134,7 @@ const openChat = () => {
   closeMenu()
 }
 
-const langLabel = computed(() => (locale.value === 'cs' ? 'Jazyk' : 'Language'))
+const langLabel = 'Language'
 
 const isActive = (path) => route.path === path || route.path.startsWith(path + '/')
 

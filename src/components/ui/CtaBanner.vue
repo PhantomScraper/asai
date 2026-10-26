@@ -14,10 +14,10 @@
             {{ primaryText || t('common.contactUs') }}
           </a>
           <RouterLink v-if="secondaryLink && !secondaryExternal" :to="secondaryLink" class="btn btn-outline cta-banner__secondary">
-            {{ secondaryText || t('cta.faq') }}
+            {{ secondaryText || t('cta.docs') }}
           </RouterLink>
           <a v-else-if="secondaryLink && secondaryExternal" :href="secondaryLink" target="_blank" rel="noopener noreferrer" class="btn btn-outline cta-banner__secondary">
-            {{ secondaryText || t('cta.faq') }}
+            {{ secondaryText || t('cta.docs') }}
           </a>
         </div>
       </div>
@@ -27,6 +27,7 @@
 
 <script setup>
 import { useI18n } from '@/i18n'
+import { externalLinks } from '@/data/site'
 
 defineProps({
   title: { type: String, default: '' },
@@ -35,8 +36,8 @@ defineProps({
   primaryLink: { type: String, default: '/about#contact' },
   primaryExternal: { type: Boolean, default: false },
   secondaryText: { type: String, default: '' },
-  secondaryLink: { type: String, default: '/support' },
-  secondaryExternal: { type: Boolean, default: false },
+  secondaryLink: { type: String, default: externalLinks.docs },
+  secondaryExternal: { type: Boolean, default: true },
 })
 
 const { t } = useI18n()

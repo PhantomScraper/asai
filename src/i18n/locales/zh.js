@@ -48,7 +48,7 @@ export default {
     forum: '论坛',
     store: '商店',
     contact: '联系方式',
-    copyright: 'Copyright © 2019–2026 by LEAPS',
+    copyright: 'Copyright © {year} by LEAPS',
     privacy: '隐私政策',
     description: 'LEAPS 开发基于超宽带的实时定位与实时遥测系统——为仓库、医院、工厂等提供精确定位和数据遥测。',
     stayConnected: '保持联系',
@@ -57,9 +57,8 @@ export default {
   },
   cta: {
     title: '需要帮助吗？',
-    description: '请查看我们的常见问题，或给我们留言。我们会尽快回复您。',
-    faq: '常见问题',
-    faqDocs: 'docs.leapslabs.com 上的常见问题',
+    description: '请查看我们的文档，或给我们留言。我们会尽快回复您。',
+    docs: '在线文档',
   },
   quickstart: {
     quickstart: '快速入门',
@@ -128,8 +127,8 @@ export default {
         { title: '超越技术本身', text: '我们的专业经验与合作伙伴关系确保每个项目的创新与可靠。' },
       ],
       stats: [
-        { value: '2016', label: '成立于欧盟布拉格' },
-        { value: '10+', label: '年 UWB 经验' },
+        { value: '12+', label: '年 UWB RTLS 经验' },
+        { value: '300万+', label: '由我们设计或采用我们技术的 UWB 设备' },
         { value: 'Fortune 500', label: '客户遍布全球' },
         { value: '100%', label: '自主研发' },
       ],
@@ -548,26 +547,15 @@ export default {
   },
   support: {
     heroTitle: '支持',
-    heroSubtitle: 'LEAPS RTLS、PANS PRO RTLS 和 UDK 演示套件的文档、快速入门指南和社区资源。',
+    heroSubtitle: '一体化 UWB 演示套件（UDK）、LEAPS RTLS 和 PANS PRO RTLS 的文档、快速入门指南和社区资源。',
     ctaDocs: '访问文档',
-    docsSectionsLabel: '文档章节',
     docsSectionsTitle: '浏览 LEAPS 官方文档',
-    docsSectionsSubtitle: '为每个组件提供全面说明——在 docs.leapslabs.com 上按章节组织。',
     askDocs: '问问文档',
     askDocsHint: '找不到所需内容？向我们的 AI 助手提问——它会直接依据 LEAPS 官方文档作答。',
-    mailingTitle: '文档邮件列表',
-    mailingText: '请订阅我们的邮件列表，以便在文档发布后第一时间获知。',
-    mailingButton: '订阅',
-    modalTitle: '订阅更新',
-    modalText: '文档发布后即可收到通知。',
-    emailPlaceholder: '您的邮箱',
     resources: [
       { title: '文档', description: '为 UDK DEMO KIT、LEAPS RTLS 和 PANS PRO RTLS 的每个组件提供全面说明。', linkText: '阅读文档' },
       { title: '快速入门指南', description: '按照 UDK 快速入门指南，开始对超宽带和 RTLS 技术进行实际评估。', linkText: 'UDK 快速入门' },
       { title: '社区论坛', description: '参与讨论、提出疑问，并与全球 LEAPS 客户和用户社区建立联系。', linkText: '访问论坛' },
-    ],
-    docSections: [
-      'LEAPS 解决方案', 'UDK 演示套件', 'LEAPS RTLS', 'PANS PRO RTLS', '硬件', '常见问题', '支持',
     ],
   },
   about: {
@@ -589,7 +577,7 @@ export default {
       },
       {
         title: '经验',
-        description: 'LEAPS 团队在使用多种技术（2.4 GHz ToF、2.4 GHz 相位测量、传感器融合和超宽带）开发实时定位系统方面，拥有超过 10 年的丰富经验。自 2014 年起，团队全身心投入超宽带技术。',
+        description: 'LEAPS 团队在使用多种技术（2.4 GHz ToF、2.4 GHz 相位测量、传感器融合和超宽带）开发实时定位系统方面，拥有超过 12 年的丰富经验。自 2014 年起，团队全身心投入超宽带技术。',
         icon: '/images/about/experience.png',
       },
     ],

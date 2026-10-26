@@ -20,6 +20,7 @@
         <div class="footer__links">
           <h4>{{ t('footer.navigation') }}</h4>
           <RouterLink v-for="link in navLinks" :key="link.path" :to="link.path">{{ link.name }}</RouterLink>
+          <a :href="externalLinks.privacy" target="_blank" rel="noopener noreferrer">{{ t('footer.privacy') }}</a>
         </div>
         <div class="footer__links">
           <h4>{{ t('footer.resources') }}</h4>
@@ -37,10 +38,10 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p>{{ t('footer.copyright') }}</p>
+        <p>{{ t('footer.copyright', { year: new Date().getFullYear() }) }}</p>
         <RouterLink to="/about">{{ navLinks.find(l => l.path === '/about')?.name }}</RouterLink>
-        <a href="#">{{ t('footer.privacy') }}</a>
-        <a class="footer__phone" :href="`tel:${contact.phone.replace(/\s/g, '')}`">{{ contact.phone }}</a>
+        <a :href="externalLinks.privacy" target="_blank" rel="noopener noreferrer">{{ t('footer.privacy') }}</a>
+        <a class="footer__email" :href="`mailto:${contact.email}`">{{ contact.email }}</a>
       </div>
     </div>
   </footer>
@@ -70,10 +71,13 @@ const { t, navLinks } = useI18n()
 .footer__links { display: flex; flex-direction: column; gap: 0.75rem; }
 .footer__links a { font-size: 0.9375rem; color: rgba(255, 255, 255, 0.65); transition: color var(--transition); }
 .footer__links a:hover { color: white; }
+.footer__contact { gap: 0.2rem; }
 .footer__contact p { font-size: 0.9375rem; color: rgba(255, 255, 255, 0.65); margin-bottom: 0; line-height: 1.5; }
 .footer__bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.875rem; color: rgba(255, 255, 255, 0.45); }
 .footer__bottom a { color: rgba(255, 255, 255, 0.55); }
-.footer__phone { margin-left: auto; }
+.footer__email { margin-left: auto; }
 @media (max-width: 1024px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .footer__grid { grid-template-columns: 1fr; gap: 2rem; } .footer__phone { margin-left: 0; } }
+@media (max-width: 640px) { .footer__grid { grid-template-columns: 1fr; gap: 2rem; } .footer__email { margin-left: 0; } }
+/* Keep the bottom row clear of the fixed QuickstartBar (desktop only) */
+@media (min-width: 768px) { .footer { padding-bottom: 6.5rem; } }
 </style>

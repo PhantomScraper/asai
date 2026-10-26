@@ -61,7 +61,7 @@ const { locale } = useI18n();
 const docsLang = computed(() => (["en", "ja", "zh"].includes(locale.value) ? locale.value : "en"));
 
 const UI = {
-  en: { title: "Ask the docs", ask: "Ask the docs", hint: "Ask anything about LEAPS RTLS, PANS PRO, UDK…", placeholder: "Type your question…", send: "Send", close: "Close" },
+  en: { title: "Ask the Docs", ask: "Ask the Docs", hint: "Ask anything about LEAPS RTLS, PANS PRO, UDK…", placeholder: "Type your question…", send: "Send", close: "Close" },
   cs: { title: "Zeptejte se dokumentace", ask: "Zeptat se", hint: "Zeptejte se na LEAPS RTLS, PANS PRO, UDK…", placeholder: "Napište dotaz…", send: "Odeslat", close: "Zavřít" },
   ja: { title: "ドキュメントに質問", ask: "質問する", hint: "LEAPS RTLS、PANS PRO、UDK などについて質問できます", placeholder: "質問を入力…", send: "送信", close: "閉じる" },
   zh: { title: "向文档提问", ask: "提问", hint: "可询问 LEAPS RTLS、PANS PRO、UDK 等", placeholder: "输入您的问题…", send: "发送", close: "关闭" },

@@ -10,6 +10,9 @@
     />
     <section class="section support__resources">
       <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">{{ t('support.docsSectionsTitle') }}</h2>
+        </div>
         <div class="grid-3">
           <article v-for="(resource, i) in tm('support.resources')" :key="resource.title" class="card support__card">
             <span class="support__icon" aria-hidden="true">
@@ -36,21 +39,6 @@
             <a :href="resourceLinks[i]" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">{{ resource.linkText }}</a>
           </article>
         </div>
-      </div>
-    </section>
-    <section class="section support__docs">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">{{ t('support.docsSectionsLabel') }}</span>
-          <h2 class="section-title">{{ t('support.docsSectionsTitle') }}</h2>
-          <p class="section-subtitle section-header__subtitle">{{ t('support.docsSectionsSubtitle') }}</p>
-        </div>
-        <div class="support__docs-grid">
-          <a v-for="(section, i) in tm('support.docSections')" :key="section" :href="docSectionLinks[i]" target="_blank" rel="noopener noreferrer" class="chip">
-            {{ section }}
-            <span aria-hidden="true">{{ t('common.arrow') }}</span>
-          </a>
-        </div>
         <div class="support__ask">
           <button type="button" class="btn btn-primary support__ask-btn" @click="openChat">
             <span aria-hidden="true">✦</span>
@@ -60,35 +48,12 @@
         </div>
       </div>
     </section>
-    <section class="section support__mailing">
-      <div class="container">
-        <div class="support__mailing-banner">
-          <div class="support__mailing-copy">
-            <h2>{{ t('support.mailingTitle') }}</h2>
-            <p>{{ t('support.mailingText') }}</p>
-          </div>
-          <button type="button" class="support__mailing-btn" @click="showSubscribe = true">{{ t('support.mailingButton') }}</button>
-        </div>
-      </div>
-    </section>
-    <div v-if="showSubscribe" class="support__modal" role="dialog" aria-modal="true">
-      <div class="support__modal-content card">
-        <button class="support__modal-close" @click="showSubscribe = false" aria-label="Close">×</button>
-        <h3>{{ t('support.modalTitle') }}</h3>
-        <p>{{ t('support.modalText') }}</p>
-        <form @submit.prevent="handleSubscribe">
-          <input v-model="email" type="email" :placeholder="t('support.emailPlaceholder')" required />
-          <button type="submit" class="btn btn-primary">{{ t('common.subscribe') }}</button>
-        </form>
-        <p v-if="subscribed" class="support__success">{{ t('common.subscribeSuccess') }}</p>
-      </div>
-    </div>
-    <CtaBanner :secondary-text="t('cta.faqDocs')" secondary-link="https://docs.leapslabs.com/faq/" secondary-external />
+    <CtaBanner />
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import HeroSection from '@/components/ui/HeroSection.vue'
 import CtaBanner from '@/components/ui/CtaBanner.vue'
 import { useI18n } from '@/i18n'
@@ -97,24 +62,9 @@ import { externalLinks } from '@/data/site'
 const { t, tm } = useI18n()
 // Documentation lives at docs.leapslabs.com — link out rather than to the local mirror.
 const resourceLinks = computed(() => [externalLinks.docs, externalLinks.udkStart, externalLinks.forum])
-const docSectionLinks = computed(() =>
-  ['leaps-solutions', 'udk', 'leaps-rtls', 'pans-pro-rtls', 'hardware', 'faq', 'support'].map(
-    (s) => `${externalLinks.docs}${s}/`
-  )
-)
 
 const chatOpen = useState('leaps-chat-open', () => false)
 const openChat = () => { chatOpen.value = true }
-
-const showSubscribe = ref(false)
-const email = ref('')
-const subscribed = ref(false)
-
-const handleSubscribe = () => {
-  subscribed.value = true
-  email.value = ''
-  setTimeout(() => { showSubscribe.value = false; subscribed.value = false }, 2500)
-}
 </script>
 
 <style scoped>
@@ -160,22 +110,9 @@ const handleSubscribe = () => {
   flex: 1;
 }
 
-/* Qorvo signature: tinted band with a large asymmetric corner, chip links */
-.support__docs {
-  background: var(--tint-brand);
-  border-radius: 0 0 var(--radius-corner-lg) 0;
-}
-
-.support__docs-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-/* Prominent Ask-the-docs entry right below the docs links */
+/* Ask-the-Docs entry right below the resource cards */
 .support__ask {
-  margin-top: 1.75rem;
+  margin-top: 2.5rem;
   text-align: center;
 }
 
@@ -187,108 +124,5 @@ const handleSubscribe = () => {
   margin-top: 0.625rem;
   font-size: 0.875rem;
   color: var(--color-text-muted);
-}
-
-/* Mailing list: compact blue banner */
-.support__mailing {
-  background: white;
-}
-
-.support__mailing-banner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  background: var(--color-primary);
-  border-radius: var(--radius-md);
-  padding: clamp(1.5rem, 3vw, 2rem);
-}
-
-.support__mailing-copy h2 {
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.support__mailing-copy p {
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 560px;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-}
-
-.support__mailing-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  color: var(--color-primary-dark);
-  border-radius: var(--radius-pill);
-  padding: 0.7rem 1.75rem;
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: all var(--transition);
-}
-
-.support__mailing-btn:hover {
-  background: var(--color-ink);
-  color: white;
-}
-
-.support__modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 20, 25, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 1rem;
-}
-
-.support__modal-content {
-  position: relative;
-  max-width: 440px;
-  width: 100%;
-  padding: 2rem;
-}
-
-.support__modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  color: var(--color-text-muted);
-}
-
-.support__modal-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.support__modal-content input {
-  padding: 0.875rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: 0.9375rem;
-}
-
-.support__success {
-  color: #059669;
-  margin-top: 1rem;
-  font-size: 0.875rem;
-}
-
-@media (max-width: 640px) {
-  .support__mailing-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 </style>

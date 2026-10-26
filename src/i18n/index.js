@@ -4,15 +4,13 @@
 import { computed } from "vue";
 import { useState, useCookie } from "#imports";
 import en from "./locales/en.js";
-import cs from "./locales/cs.js";
 import ja from "./locales/ja.js";
 import zh from "./locales/zh.js";
 
-const messages = { en, cs, ja, zh };
+const messages = { en, ja, zh };
 
 export const supportedLocales = [
   { code: "en", label: "English" },
-  { code: "cs", label: "Čeština" },
   { code: "ja", label: "日本語" },
   { code: "zh", label: "中文" },
 ];
